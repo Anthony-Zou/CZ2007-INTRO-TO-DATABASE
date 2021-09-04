@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-09-04T10:40:55.667Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="A98j4Fzus74iN_yo-zKQ" version="15.0.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-09-04T11:01:30.699Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="WaPh_Gznp1xJxiIry3y7" version="14.0.4" type="github">
   <diagram name="Page-1" id="e7e014a7-5840-1c2e-5031-d8a46d1fe8dd">
-    <mxGraphModel dx="2177" dy="1348" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
+    <mxGraphModel dx="2250" dy="1574" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -751,7 +751,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="ZvNZ9_FlC1upSQAxGc2a-37" value="ORDER_ITEM" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-          <mxGeometry x="450" y="1178" width="140" height="234" as="geometry" />
+          <mxGeometry x="450" y="1178" width="140" height="260" as="geometry" />
         </mxCell>
         <mxCell id="ZvNZ9_FlC1upSQAxGc2a-38" value="ORDER_ITEM_ID&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontStyle=4" vertex="1" parent="ZvNZ9_FlC1upSQAxGc2a-37">
           <mxGeometry y="26" width="140" height="26" as="geometry" />
@@ -776,6 +776,9 @@
         </mxCell>
         <mxCell id="ZvNZ9_FlC1upSQAxGc2a-45" value="ORDER_ID" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="ZvNZ9_FlC1upSQAxGc2a-37">
           <mxGeometry y="208" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="ZvNZ9_FlC1upSQAxGc2a-86" value="SHIPMENT_ID" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="ZvNZ9_FlC1upSQAxGc2a-37">
+          <mxGeometry y="234" width="140" height="26" as="geometry" />
         </mxCell>
         <mxCell id="Fr1E9OPYCrHmNysL7G3M-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Fr1E9OPYCrHmNysL7G3M-1" target="Fr1E9OPYCrHmNysL7G3M-8">
           <mxGeometry relative="1" as="geometry" />
@@ -930,7 +933,7 @@
         <mxCell id="ZvNZ9_FlC1upSQAxGc2a-81" value="&lt;font color=&quot;#007fff&quot;&gt;CONTAINS&lt;/font&gt;" style="shape=rhombus;double=1;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;strokeColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
           <mxGeometry x="455" y="684" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="ZvNZ9_FlC1upSQAxGc2a-84" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#007FFF;endArrow=none;" edge="1" parent="1" source="ZvNZ9_FlC1upSQAxGc2a-75" target="ZvNZ9_FlC1upSQAxGc2a-85">
+        <mxCell id="ZvNZ9_FlC1upSQAxGc2a-84" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#007FFF;endArrow=none;" edge="1" target="ZvNZ9_FlC1upSQAxGc2a-85" parent="1" source="ZvNZ9_FlC1upSQAxGc2a-75">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="575" y="624.9999999999999" as="sourcePoint" />
           </mxGeometry>
