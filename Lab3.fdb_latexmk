@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1633952823 "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab3.tex" "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab3.pdf" "Lab3" 1633952827
+["pdflatex"] 1633952823 "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab3.tex" "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab3.pdf" "Lab3" 1633952919
   "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab3.aux" 1633952824 2094 313e92409fc82bb615c0ce48de70d0d5 ""
-  "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab3.tex" 1633952827 9524 f838b9ebee39f55ea2fca27009212a23 ""
+  "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab3.tex" 1633952919 9524 f838b9ebee39f55ea2fca27009212a23 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -106,14 +106,14 @@
   "ERD_1.4.png" 1633952296 219059 8a18e83cd1b667c2228855615f6c8c5f ""
   "Lab3.aux" 1633952824 2094 313e92409fc82bb615c0ce48de70d0d5 "pdflatex"
   "Lab3.out" 1633952824 1167 36da103a465e9f38f16ce277c42562c7 "pdflatex"
-  "Lab3.tex" 1633952827 9524 f838b9ebee39f55ea2fca27009212a23 ""
+  "Lab3.tex" 1633952919 9524 f838b9ebee39f55ea2fca27009212a23 ""
   "Lab3.toc" 1633952824 855 727e2ae268fb7f6a83b4b9550730db36 "pdflatex"
   "logo.jpg" 1633951338 136529 2eccc9d137214e9097681ecb058e8564 ""
   (generated)
   "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab3.log"
-  "Lab3.toc"
-  "Lab3.aux"
   "Lab3.log"
   "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab3.pdf"
+  "Lab3.toc"
   "Lab3.out"
   "Lab3.pdf"
+  "Lab3.aux"
