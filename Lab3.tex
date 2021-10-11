@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[hidelinks,12pt]{article}
 \usepackage[round]{natbib}
 \usepackage{diagbox} 
 \usepackage{multirow}
@@ -28,9 +28,13 @@
     Mulder Choo U2022324D
 }
 \maketitle\thispagestyle{fancy}
+\newpage
 
+\tableofcontents
+\newpage
 \begin{enumerate}
-\item CREDIT\_CARD (card\_num, bank, date\_valid\_to, date\_valid\_from, customer\_id) 
+    \section{REDIT\_CARD}
+    \item[] CREDIT\_CARD (card\_num, bank, date\_valid\_to, date\_valid\_from, customer\_id) 
     \begin{description}
         \item[Keys:] card\_num
         \item[Primary Key:] card\_num
@@ -42,7 +46,7 @@
 
 
 
-\item CUSTOMER (customer\_id, username, email,password,full\_name,address,phone\_num) 
+\section{CUSTOMER} CUSTOMER (customer\_id, username, email,password,full\_name,address,phone\_num) 
     \begin{description}
         \item[Keys:] customer\_id,username, email
         \item[Primary Key:] customer\_id
@@ -91,7 +95,7 @@
 
 
 
-\item ORDER (order\_id, date, status, customer\_id)   
+\section{ORDER} ORDER (order\_id, date, status, customer\_id)   
 \begin{description}
     \item[Keys:] order\_id
     \item[Primary Key:] order\_id
@@ -100,68 +104,24 @@
     \item All the attributes  are functionally dependent on solely the Primary Key (order\_id)
     \item $\therefore$The relation is in 3NF 
 \end{description}
+
 \newpage
-\item ORDER\_ITEM ( sequence\_num(A), order\_id(B), product\_unit\_price(C), quantity(D), status(E),
+\section{ORDER\_ITEM} ORDER\_ITEM ( sequence\_num(A), order\_id(B), product\_unit\_price(C), quantity(D), status(E),
                     \\product\_id(F), shipment\_id(G)) 
 \begin{description}
     \item[Keys:] \{sequence\_num(A), order\_id(B)\}
     \item[Primary Key:] \{sequence\_num(A), order\_id(B)\}
     \item[FDs:]  AB$\rightarrow$CDEFG \quad F$\rightarrow$C
-    \item[] F$\rightarrow$D violates 3NF (F is not a ) 
+    \item[] F$\rightarrow$D violates 3NF (F is not a superkey, C is not contained in a key) 
+    \item  
 \end{description}
    
 
 
-\item ORDER\_ITEM ( sequence\_num, order\_id  , product\_unit\_price, quantity, status, order\_price, product\_id, shipment\_id) 
-\begin{description}
-    \item[Keys:] \{sequence\_num, order\_id\}
-    \item[Primary Key:] \{sequence\_num, order\_id\}
-    %\item[Foreign Keys:] product\_id \textbf{references} PRODUCT  
-   % \\ shipment\_id \textbf{references} SHIPMENT
-    \item[FDs:]  
-    \item sequence\_num, order\_id $\rightarrow$product\_unit\_price, quantity, status, order\_price, \\product\_id, shipment\_id
-    \item product\_id $\rightarrow$ product\_unit\_price
-    \item product\_unit\_price, quantity $\rightarrow$ order\_price
-    \item [conclusion]
-    \item product\_id, \{ product\_unit\_price, quantity\}is not a superkey of the relation
-    \item product\_unit\_price and order\_price are not contained in a key
-    \item $\therefore$The relation is \textbf{not} in 3NF 
-    \item 
-    \item[3NF Procedures:]
-    \item
-    \item ORDER\_ITEM ( sequence\_num(A), order\_id(B)  ,  product\_id(C), shipment\_id(D),\\product\_unit\_price(E), quantity(F), status(G), order\_price(H)) 
-    \item = ORDER\_ITEM(A,B,C,D,E,F,G,H)
-    \item[KEYS:]AB
-    \item[FDS:]AB$\rightarrow$CDEFGH,\ C $\rightarrow$E,\ EF$\rightarrow$H
-    \item[STEP 1(Minimal Basis for R):] 
-    \item 
-    \item[STEP 1.1(For all FD, RHS must have only one attribue):]
-    \item AB$\rightarrow$C,\ AB$\rightarrow$D\ ,AB$\rightarrow$E\ ,AB$\rightarrow$F,\ AB$\rightarrow$G,\  AB$\rightarrow$H\ ,C$\rightarrow$E\ ,EF$\rightarrow$H\  
-    \item[STEP 1.2(Remove redundant FDs):] 
-    \item we remove AB$\rightarrow$E
-    \item $\{AB\}^+$=\{ABCDEFGH\}
-    \item AB$\rightarrow$C,\quad C$\rightarrow$E,\quad AB$\rightarrow$E
-    \item $\therefore$ AB $\rightarrow$ E is redundant
-    \item we remove AB$\rightarrow$H
-    \item $\{AB\}^+$=\{ABCDEFGH\}
-    \item AB$\rightarrow$C,\quad C$\rightarrow$E,\quad AB$\rightarrow$F ,\quad EF$\rightarrow$H
-    \item $\therefore$ AB $\rightarrow$ H is redundant
-    \item[STEP 1.3(For all FDs, LHS must have no redundant attribues ):]
-    \item AB$\rightarrow$C,\ AB$\rightarrow$D\  ,AB$\rightarrow$F,\ AB$\rightarrow$G,\  AB$\rightarrow$H\ ,C$\rightarrow$E\ ,EF$\rightarrow$H\ 
-    \item  
-    \item[STEP 2(Combine all FDs with common LHS ):] 
-  
-    \item AB$\rightarrow$CDFG \quad C$\rightarrow$E \quad EF$\rightarrow$H  
-    \item[STEP 3(Create table for each FD ):] 
-    \item $R_1$ (ABCDFG)\quad =\quad  $R_1$ (( sequence\_num, order\_id ) ,  product\_id, shipment\_id,\\ quantity, status )
-    \item $R_2$(CE)\quad =\quad   $R_2$( product\_id,product\_unit\_price)
-    \item $R_3$(EFH)\quad =\quad $R_3$(product\_unit\_price, quantity,order\_price)
-    \item All the attributes  are functionally dependent on solely their Primary Keys
-    \item $\therefore$ The relation is in 3NF 
-\end{description}
 
 
-\item PRODUCT\_TYPE (product\_type\_id, description, parent\_product\_type\_id) 
+
+\section{PRODUCT\_TYPE} PRODUCT\_TYPE (product\_type\_id, description, parent\_product\_type\_id) 
 \begin{description}
     \item[Keys:] product\_type\_id
     \item[Primary Key:] product\_type\_id
@@ -172,7 +132,7 @@
 \end{description}
 
 
-\item RESTRICTED\_TO (shop\_id, product\_type\_id)  
+\section{RESTRICTED\_TO} RESTRICTED\_TO (shop\_id, product\_type\_id)  
 \begin{description}
     \item[Keys:] \{shop\_id,product\_type\_id\}
     \item[Primary Key:] \{shop\_id,product\_type\_id\}
@@ -183,7 +143,7 @@
 \end{description}
 
 
-\item SHIPMENT (shipment\_id, tracking\_num, date, invoice\_number) 
+\section{SHIPMENT} SHIPMENT (shipment\_id, tracking\_num, date, invoice\_number) 
 \begin{description}
     \item[Keys:] shipment\_id, tracking\_num
     \item[Primary Key:] shipment\_id
@@ -193,7 +153,7 @@
     \item $\therefore$The relation is in 3NF 
 \end{description}
 
-\item INVOICE(invoice\_number,date,status,order\_id)
+\section{INVOICE} INVOICE(invoice\_number,date,status,order\_id)
 \begin{description}
     \item[Keys:] invoice\_number
     \item[Primary Key:] invoice\_number
@@ -203,7 +163,7 @@
     \item $\therefore$The relation is in 3NF 
 \end{description}
 
-\item PAYMENT (payment\_id, amount, card\_num,invoice\_number) 
+\section{PAYMENT} PAYMENT (payment\_id, amount, card\_num,invoice\_number) 
 \begin{description}
     \item[Keys:] payment\_id
     \item[Primary Key:] payment\_id
@@ -214,7 +174,7 @@
 \end{description}
 
 
-\item PRODUCT(product\_id,name,colour,price,size,description,shop\_id,product\_type\_id)
+\section{PRODUCT} PRODUCT(product\_id,name,colour,price,size,description,shop\_id,product\_type\_id)
 
 \begin{description}
     \item[Keys:] product\_id
@@ -229,7 +189,7 @@
 
 
 
-\item PRODUCT\_PHOTO(photo\_sequence,product\_id,pic)
+\section{PRODUCT\_PHOTO} PRODUCT\_PHOTO(photo\_sequence,product\_id,pic)
 
 \begin{description}
     \item[Keys:] \{photo\_sequence, product\_id\}
@@ -242,7 +202,7 @@
 
 
 
-\item SHOP (shop\_id, shop\_name)
+\section{SHOP} SHOP (shop\_id, shop\_name)
 \begin{description}
     \item[Keys:] shop\_id
     \item[Primary Key:] shop\_id
@@ -251,7 +211,12 @@
     \item     \item All the attributes  are functionally dependent on solely its \\Primary Key ( shop\_id ) 
     \item $\therefore$The relation is in 3NF 
 \end{description}
+
+
+\section{ERD REFERENCE}
+\qquad\qquad\qquad\includegraphics[width=0.583\columnwidth]{ERD_1.4.png}
 \end{enumerate}
+
 
 
 \end{document}

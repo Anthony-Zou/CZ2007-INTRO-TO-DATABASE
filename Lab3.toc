@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}REDIT\_CARD}{3}{section.1}%
+\contentsline {section}{\numberline {2}CUSTOMER}{3}{Item.1}%
+\contentsline {section}{\numberline {3}ORDER}{4}{section.3}%
+\contentsline {section}{\numberline {4}ORDER\_ITEM}{5}{section.4}%
+\contentsline {section}{\numberline {5}PRODUCT\_TYPE}{5}{section.5}%
+\contentsline {section}{\numberline {6}RESTRICTED\_TO}{5}{section.6}%
+\contentsline {section}{\numberline {7}SHIPMENT}{5}{section.7}%
+\contentsline {section}{\numberline {8}INVOICE}{6}{section.8}%
+\contentsline {section}{\numberline {9}PAYMENT}{6}{section.9}%
+\contentsline {section}{\numberline {10}PRODUCT}{6}{section.10}%
+\contentsline {section}{\numberline {11}PRODUCT\_PHOTO}{6}{section.11}%
+\contentsline {section}{\numberline {12}SHOP}{7}{section.12}%
+\contentsline {section}{\numberline {13}ERD REFERENCE}{8}{section.13}%
