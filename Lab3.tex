@@ -100,6 +100,17 @@
     \item All the attributes  are functionally dependent on solely the Primary Key (order\_id)
     \item $\therefore$The relation is in 3NF 
 \end{description}
+\newpage
+\item ORDER\_ITEM ( sequence\_num(A), order\_id(B), product\_unit\_price(C), quantity(D), status(E),
+                    \\product\_id(F), shipment\_id(G)) 
+\begin{description}
+    \item[Keys:] \{sequence\_num(A), order\_id(B)\}
+    \item[Primary Key:] \{sequence\_num(A), order\_id(B)\}
+    \item[FDs:]  AB$\rightarrow$CDEFG \quad F$\rightarrow$C
+    \item[] F$\rightarrow$D violates 3NF (F is not a ) 
+\end{description}
+   
+
 
 \item ORDER\_ITEM ( sequence\_num, order\_id  , product\_unit\_price, quantity, status, order\_price, product\_id, shipment\_id) 
 \begin{description}
