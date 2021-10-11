@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.7)  11 OCT 2021 19:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.7)  11 OCT 2021 20:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -484,29 +484,29 @@ File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 77.
- [4] [5] [6]
-<ERD_1.4.png, id=105, 976.64874pt x 2068.72874pt>
+ [4] [5] [6] [7]
+<ERD_1.4.png, id=110, 976.64874pt x 2068.72874pt>
 File: ERD_1.4.png Graphic file (type png)
 <use ERD_1.4.png>
-Package pdftex.def Info: ERD_1.4.png  used on input line 217.
+Package pdftex.def Info: ERD_1.4.png  used on input line 237.
 (pdftex.def)             Requested size: 304.41217pt x 644.80315pt.
- [7] [8 </Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/ERD_1.4.png>] (/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab3.aux)
+ [8] [9 </Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/ERD_1.4.png>] (/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab3.aux)
 Package rerunfilecheck Info: File `Lab3.out' has not changed.
 (rerunfilecheck)             Checksum: 36DA103A465E9F38F16CE277C42562C7;1167.
  ) 
 Here is how much of TeX's memory you used:
- 12146 strings out of 478994
- 180096 string characters out of 5858184
+ 12147 strings out of 478994
+ 180102 string characters out of 5858184
  494362 words of memory out of 5000000
  29432 multiletter control sequences out of 15000+600000
  412238 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,16n,77p,437b,507s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on /Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab3.pdf (8 pages, 330120 bytes).
+Output written on /Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab3.pdf (9 pages, 331574 bytes).
 PDF statistics:
- 148 PDF objects out of 1000 (max. 8388607)
- 125 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
+ 152 PDF objects out of 1000 (max. 8388607)
+ 128 compressed objects within 2 object streams
+ 24 named destinations out of 1000 (max. 500000)
  115 words of extra memory for PDF output out of 10000 (max. 10000000)
 

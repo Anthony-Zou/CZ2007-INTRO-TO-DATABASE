@@ -93,7 +93,7 @@
     \end{description}
 
 
-
+\newpage
 
 \section{ORDER} ORDER (order\_id, date, status, customer\_id)   
 \begin{description}
@@ -105,7 +105,6 @@
     \item $\therefore$The relation is in 3NF 
 \end{description}
 
-\newpage
 \section{ORDER\_ITEM} ORDER\_ITEM ( sequence\_num(A), order\_id(B), product\_unit\_price(C), quantity(D), status(E),
                     \\product\_id(F), shipment\_id(G)) 
 \begin{description}
@@ -113,9 +112,30 @@
     \item[Primary Key:] \{sequence\_num(A), order\_id(B)\}
     \item[FDs:]  AB$\rightarrow$CDEFG \quad F$\rightarrow$C
     \item[] F$\rightarrow$D violates 3NF (F is not a superkey, C is not contained in a key) 
-    \item  
+    \item[Step 1:] Find minimal Basis
+    \begin{enumerate}
+    \item [Step 1.1] (Keep RHS only 1 attribute): 
+    \item [] AB$\rightarrow$C,\quad AB$\rightarrow$D,\quad AB$\rightarrow$E, \quad AB$\rightarrow$F,\quad AB$\rightarrow$G,F$\rightarrow$C
+    \item [Step 1.2] (Remove redundant FD):
+    \item [] AB$\rightarrow$D, \quad AB$\rightarrow$E, \quad AB$\rightarrow$F,\quad AB$\rightarrow$G, \quad F$\rightarrow$C
+    \item [Step 1.3] (Remove dedundanr attributes on LHS):
+    \item [] AB$\rightarrow$D,\quad AB$\rightarrow$E, \quad AB$\rightarrow$F,\quad AB$\rightarrow$G,\quad F$\rightarrow$C
+    \end{enumerate}
+    \item[Step 2:] Combine FDs whose LHS are same):
+    \item[] AB$\rightarrow$DEFG, \quad F$\rightarrow$C
+    \item[Step 3:] Create a table for each FD: 
+    \item[] $R_1$(A, B, D, E, F, G),\quad $R_2$(F,C)  
+    \item[Step 4:] $R_2$(F,C) is redundant with PRODUCT table, so we need to remove $R_2$
+    \item[] $\therefore$ Final Answer:  R(A, B, D, E, F, G)
+    \item[]  
+    \item[] ORDER\_ITEM ( sequence\_num(A), order\_id(B), quantity(D), status(E),
+    product\_id(F), \\shipment\_id(G)) 
+    \item[] All the attributes  are functionally dependent on solely its 
+    \item[] Primary Key\{sequence\_num(A), order\_id(B)\}
+    \item $\therefore$The relation is in 3NF 
 \end{description}
-   
+
+\newpage
 
 
 
@@ -200,7 +220,7 @@
     \item $\therefore$The relation is   in 3NF 
 \end{description}
 
-
+\newpage
 
 \section{SHOP} SHOP (shop\_id, shop\_name)
 \begin{description}
