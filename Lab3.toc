@@ -1,4 +1,4 @@
-\contentsline {section}{\numberline {1}REDIT\_CARD}{3}{section.1}%
+\contentsline {section}{\numberline {1}CREDIT\_CARD}{3}{section.1}%
 \contentsline {section}{\numberline {2}CUSTOMER}{3}{Item.1}%
 \contentsline {section}{\numberline {3}ORDER}{5}{section.3}%
 \contentsline {section}{\numberline {4}ORDER\_ITEM}{5}{section.4}%

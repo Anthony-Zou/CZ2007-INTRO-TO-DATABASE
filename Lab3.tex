@@ -33,7 +33,7 @@
 \tableofcontents
 \newpage
 \begin{enumerate}
-    \section{REDIT\_CARD}
+    \section{CREDIT\_CARD}
     \item[] CREDIT\_CARD (card\_num, bank, date\_valid\_to, date\_valid\_from, customer\_id) 
     \begin{description}
         \item[Keys:] card\_num
@@ -125,14 +125,15 @@
     \item[] AB$\rightarrow$DEFG, \quad F$\rightarrow$C
     \item[Step 3:] Create a table for each FD: 
     \item[] $R_1$(A, B, D, E, F, G),\quad $R_2$(F,C)  
-    \item[Step 4:] $R_2$(F,C) is redundant with PRODUCT table, so we need to remove $R_2$
-    \item[] $\therefore$ Final Answer:  R(A, B, D, E, F, G)
-    \item[]  
-    \item[] ORDER\_ITEM ( sequence\_num(A), order\_id(B), quantity(D), status(E),
-    product\_id(F), \\shipment\_id(G)) 
-    \item[] All the attributes  are functionally dependent on solely its 
-    \item[] Primary Key\{sequence\_num(A), order\_id(B)\}
-    \item $\therefore$The relation is in 3NF 
+    % \item[Step 4:] $R_2$(F,C) is redundant with PRODUCT table, so we need to remove $R_2$
+    % \item[] $\therefore$ Final Answer:  R(A, B, D, E, F, G)
+    % \item[]  
+    % \item[] ORDER\_ITEM ( sequence\_num(A), order\_id(B), quantity(D), status(E),
+    % product\_id(F), \\shipment\_id(G)) 
+    % \item[] All the attributes  are functionally dependent on solely its 
+    % \item[] Primary Key\{sequence\_num(A), order\_id(B)\}
+     \item[]
+     \item $\therefore$The relation is in 3NF 
 \end{description}
 
 \newpage
@@ -163,12 +164,13 @@
 \end{description}
 
 
-\section{SHIPMENT} SHIPMENT (shipment\_id, tracking\_num, date, invoice\_number) 
+\section{SHIPMENT} SHIPMENT (shipment\_id, tracking\_num, date) 
 \begin{description}
     \item[Keys:] shipment\_id, tracking\_num
     \item[Primary Key:] shipment\_id
    % \item[Foreign Keys:]  invoice\_number \textbf{references} INVOICE
-    \item[FDs:] shipment\_id $\rightarrow$  tracking\_num, date,invoice\_number
+    \item[FDs:] shipment\_id $\rightarrow$  tracking\_num, date \quad 
+    \item[] tracking\_num $\rightarrow$ shipment\_id, date
     \item All the attributes  are functionally dependent on solely its Primary Key(shipment\_id) 
     \item $\therefore$The relation is in 3NF 
 \end{description}
