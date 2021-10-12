@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1634017514 "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab 3 3NF Doc/Lab3.tex" "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab 3 3NF Doc/Lab3.pdf" "Lab3" 1634017527
-  "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab 3 3NF Doc/Lab3.aux" 1634017516 2087 c8c46b5ae5c61182298e091e7e80b3e8 ""
-  "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab 3 3NF Doc/Lab3.tex" 1634017525 12078 304ca2784efd01802290e50c46d90cdd ""
+["pdflatex"] 1634018087 "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab 3 3NF Doc/Lab3.tex" "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab 3 3NF Doc/Lab3.pdf" "Lab3" 1634018096
+  "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab 3 3NF Doc/Lab3.aux" 1634018089 2087 c8c46b5ae5c61182298e091e7e80b3e8 ""
+  "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab 3 3NF Doc/Lab3.tex" 1634018094 12084 06e2f3e9bb19492dfcda5124109865d7 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -104,16 +104,16 @@
   "/usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1633580827 2724737 b89936e459ccd2f134a6ee20c06f58ce ""
   "/usr/local/texlive/2021/texmf.cnf" 1616695596 577 4c1911a7228e554c6032256d3cf5567d ""
   "ERD_1.4.png" 1634014788 220341 6d7908a46e377145f3d7029985c1b116 ""
-  "Lab3.aux" 1634017516 2087 c8c46b5ae5c61182298e091e7e80b3e8 "pdflatex"
-  "Lab3.out" 1634017516 1134 1f660e3cbeca9c64a87814bab445a03c "pdflatex"
-  "Lab3.tex" 1634017525 12078 304ca2784efd01802290e50c46d90cdd ""
-  "Lab3.toc" 1634017516 848 6e5b58475c06a814bbb630e97c961132 "pdflatex"
+  "Lab3.aux" 1634018089 2087 c8c46b5ae5c61182298e091e7e80b3e8 "pdflatex"
+  "Lab3.out" 1634018089 1134 1f660e3cbeca9c64a87814bab445a03c "pdflatex"
+  "Lab3.tex" 1634018094 12084 06e2f3e9bb19492dfcda5124109865d7 ""
+  "Lab3.toc" 1634018089 848 6e5b58475c06a814bbb630e97c961132 "pdflatex"
   "logo.jpg" 1634014541 136529 2eccc9d137214e9097681ecb058e8564 ""
   (generated)
-  "Lab3.pdf"
   "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab 3 3NF Doc/Lab3.log"
+  "Lab3.aux"
   "Lab3.out"
   "Lab3.log"
+  "Lab3.pdf"
   "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab 3 3NF Doc/Lab3.pdf"
-  "Lab3.aux"
   "Lab3.toc"

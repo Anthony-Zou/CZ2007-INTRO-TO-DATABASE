@@ -64,7 +64,7 @@
     \item CUSTOMER (customer\_id(A), username(B), email(C),password(D),full\_name(E),\\address(F),phone\_num(G)) 
     \item = CUSTOMER(A,B,C,D,E,F,G)
     \item[KEYS:]A,B,C
-    \item[FDS:]A$\rightarrow$BCDEFG,\ B$\rightarrow$ACDEFG,\ C$\rightarrow$BADEFG \\ ,\ G$\rightarrow$EF
+    \item[FDS:]A$\rightarrow$ABCDEFG,\ B$\rightarrow$ACDEFG,\ C$\rightarrow$BADEFG \\ ,\ G$\rightarrow$EF
     \item\item[STEP 1.1:](Keep RHS only 1 attribute): 
     \item A$\rightarrow$B,\ A$\rightarrow$C,\ A$\rightarrow$D,\ A$\rightarrow$E,\ A$\rightarrow$F,\ A$\rightarrow$G
     \item B$\rightarrow$A,\ B$\rightarrow$C,\ B$\rightarrow$D,\ B$\rightarrow$E,\ B$\rightarrow$F,\ B$\rightarrow$G
@@ -72,13 +72,13 @@
     \item G$\rightarrow$E,\ G$\rightarrow$F                                                                                                                                                                                                                                                                                                                             
     \item \item[STEP 1.2:] (Remove redundant FD):
     \item   Original closures:
-    \item $\{A\}^+$=\{ABCDEFG\},\quad $\{B\}^+$=\{ACDEFG\},\quad $\{C\}^+$=\{BADEFG\}, \\ \ $\{G\}^+$=\{EF\}
+    \item $\{A\}^+$=\{ABCDEFG\},\quad $\{B\}^+$=\{BACDEFG\},\quad $\{C\}^+$=\{CBADEFG\}, \\ \ $\{G\}^+$=\{GEF\}
     \item 
     \item we remove \quad A$\rightarrow$E,\ A$\rightarrow$F \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad $\{A\}^+$=\{ABCDEFG\}
     \item
-    \item we remove  \quad B$\rightarrow$C,\ B$\rightarrow$D,\ B$\rightarrow$E,\ B$\rightarrow$F,\ B$\rightarrow$G \quad $\{B\}^+$=\{ACDEFG\}
+    \item we remove  \quad B$\rightarrow$C,\ B$\rightarrow$D,\ B$\rightarrow$E,\ B$\rightarrow$F,\ B$\rightarrow$G \quad $\{B\}^+$=\{BACDEFG\}
     \item
-    \item we remove \quad \ C$\rightarrow$B,\ C$\rightarrow$D,\ C$\rightarrow$E,\ C$\rightarrow$F,\ C$\rightarrow$G \quad $\{C\}^+$=\{BADEFG\}
+    \item we remove \quad \ C$\rightarrow$B,\ C$\rightarrow$D,\ C$\rightarrow$E,\ C$\rightarrow$F,\ C$\rightarrow$G \quad $\{C\}^+$=\{CBADEFG\}
     
     \item\item   CUSTOMER =\{
         A$\rightarrow$B,\quad A$\rightarrow$C,\quad A$\rightarrow$D,\quad A$\rightarrow$G
