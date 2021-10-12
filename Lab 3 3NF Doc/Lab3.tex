@@ -18,7 +18,11 @@
 \rhead{\includegraphics[scale=0.3]{logo}}
 \begin{document}
 \title{CZ2007 LAB 3\\
-\large INTRODUCTION TO DATABASE}
+
+\large INTRODUCTION TO DATABASE\\
+
+SSP1 GROUP 7}
+
 \date{}
 \author{
     Zou Zeren U2022422H\\
@@ -65,6 +69,7 @@
     \item = CUSTOMER(A,B,C,D,E,F,G)
     \item[KEYS:]A,B,C
     \item[FDS:]A$\rightarrow$ABCDEFG,\ B$\rightarrow$ACDEFG,\ C$\rightarrow$BADEFG \\ ,\ G$\rightarrow$EF
+    \newpage 
     \item\item[STEP 1.1:](Keep RHS only 1 attribute): 
     \item A$\rightarrow$B,\ A$\rightarrow$C,\ A$\rightarrow$D,\ A$\rightarrow$E,\ A$\rightarrow$F,\ A$\rightarrow$G
     \item B$\rightarrow$A,\ B$\rightarrow$C,\ B$\rightarrow$D,\ B$\rightarrow$E,\ B$\rightarrow$F,\ B$\rightarrow$G
@@ -98,7 +103,7 @@
     \item $R_2$ (BA)\quad\quad \quad=\quad  $R_2$ (customer\_id, username)
     \item $R_3$ (CA)\quad \quad\quad=\quad  $R_3$ (customer\_id, email)
     \item $R_4$ (GEF)\quad  \qquad= \quad   $R_4$(phone\_num,full\_name,address)
-    \item\item[Step 4:](If non of the tables contain a key of the original table R, \\create a table that contains a key of R:)
+    \newpage \item\item[Step 4:](If non of the tables contain a key of the original table R, \\create a table that contains a key of R:)
     
     \item $R_1$ contains all keys.  Do not need to create new table
     \item \item[Step 5:](Remove redundant tables:)
@@ -107,9 +112,6 @@
     \item $R_1$ (customer\_id, username, email,password,phone\_num) \quad  $R_4$(phone\_num,full\_name,address)
     \item $\therefore$ The relation is in 3NF 
     \end{description}
-
-
-\newpage
 
 \section{ORDER} ORDER (order\_id, date, status, customer\_id)   
 \begin{description}
@@ -249,7 +251,6 @@
     \item $\therefore$The relation is   in 3NF 
 \end{description}
 
-\newpage
 
 \section{SHOP} SHOP (shop\_id, shop\_name)
 \begin{description}

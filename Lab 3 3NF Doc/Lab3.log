@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.7)  12 OCT 2021 13:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.7)  12 OCT 2021 13:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -450,18 +450,18 @@ LaTeX Info: Redefining \nameref on input line 19.
 \@outlinefile=\write3
 \openout3 = `Lab3.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 30.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 34.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 <logo.jpg, id=56, 308.5929pt x 110.814pt>
 File: logo.jpg Graphic file (type jpg)
 <use logo.jpg>
-Package pdftex.def Info: logo.jpg  used on input line 31.
+Package pdftex.def Info: logo.jpg  used on input line 35.
 (pdftex.def)             Requested size: 92.57857pt x 33.24445pt.
 
 
@@ -478,17 +478,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 \openout4 = `Lab3.toc'.
 
  [2] [3]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 75.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 80.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 75.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 80.
  [4] [5] [6] [7]
 <ERD_1.4.png, id=110, 976.64874pt x 2068.72874pt>
 File: ERD_1.4.png Graphic file (type png)
 <use ERD_1.4.png>
-Package pdftex.def Info: ERD_1.4.png  used on input line 267.
+Package pdftex.def Info: ERD_1.4.png  used on input line 268.
 (pdftex.def)             Requested size: 304.41217pt x 644.80315pt.
  [8] [9 </Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab 3 3NF Doc/ERD_1.4.png>] (/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab 3 3NF Doc/Lab3.aux)
 Package rerunfilecheck Info: File `Lab3.out' has not changed.
@@ -497,13 +497,13 @@ Package rerunfilecheck Info: File `Lab3.out' has not changed.
 Here is how much of TeX's memory you used:
  12147 strings out of 478994
  180314 string characters out of 5858184
- 495362 words of memory out of 5000000
+ 493362 words of memory out of 5000000
  29432 multiletter control sequences out of 15000+600000
  412238 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,16n,77p,449b,507s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,16n,77p,449b,509s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab 3 3NF Doc/Lab3.pdf" (9 pages, 335777 bytes).
+Output written on "/Users/anthonyzeren/Documents/GitHub/CZ2007-INTRO-TO-DATABASE/Lab 3 3NF Doc/Lab3.pdf" (9 pages, 335811 bytes).
 PDF statistics:
  152 PDF objects out of 1000 (max. 8388607)
  128 compressed objects within 2 object streams
