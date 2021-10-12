@@ -82,29 +82,24 @@
     
     \item\item   CUSTOMER =\{
         A$\rightarrow$B,\quad A$\rightarrow$C,\quad A$\rightarrow$D,\quad A$\rightarrow$G
-        \quad G$\rightarrow$E,\quad G$\rightarrow$F ,\quad B$\rightarrow$A,\quad C$\rightarrow$A\}
+        \quad G$\rightarrow$E,\quad G$\rightarrow$F\}
         \item\item[STEP 1.3:](Remove dedundanr attributes on LHS):
         
     \item CUSTOMER =\{
         A$\rightarrow$B,\quad A$\rightarrow$C,\quad A$\rightarrow$D,\quad A$\rightarrow$G
-        \quad G$\rightarrow$E,\quad G$\rightarrow$F ,\quad B$\rightarrow$A,\quad C$\rightarrow$A\}
+        \quad G$\rightarrow$E,\quad G$\rightarrow$F\}
 
 
-    \item\item[Step 2:] (Combine FDs whose LHS are same:)
-    \item[]  CUSTOMER=\{A$\rightarrow$BCDG, \quad G$\rightarrow$EF ,\quad B$\rightarrow$A,\quad C$\rightarrow$A\}
+    \item\item[Step 2:] Combine FDs whose LHS are same:
+    \item[]  CUSTOMER=\{A$\rightarrow$BCDG, \quad G$\rightarrow$EF \}
     
-    \item\item[Step 3:] (Create a table for each FD: )
+    \item\item[Step 3:] Create a table for each FD: 
     \item $R_1$ (ABCDG)\quad =\quad  $R_1$ (customer\_id, username, email,password,phone\_num)
-    \item $R_2$ (BA)\quad\quad \quad=\quad  $R_2$ (customer\_id, username)
-    \item $R_3$ (CA)\quad \quad\quad=\quad  $R_3$ (customer\_id, email)
-    \item $R_4$ (GEF)\quad  \qquad= \quad   $R_4$(phone\_num,full\_name,address)
-    \item\item[Step 4:](If non of the tables contain a key of the original table R, \\create a table that contains a key of R:)
-    
-    \item $R_1$ contains all keys.  Do not need to create new table
-    \item \item[Step 5:](Remove redundant tables:)
-    \item $R_2$ \& $R_3$ is a sub set of $R_1$ so we remove them
-    \item [Final Answer ] 
-    \item $R_1$ (customer\_id, username, email,password,phone\_num) \quad  $R_4$(phone\_num,full\_name,address)
+        \item $R_2$ (GEF)\quad  = \quad   $R_2$(phone\_num,full\_name,address)
+    \item\item[Step 4:]
+    \item[]  Final Answer: 
+    \item $R_1$ (customer\_id, username, email,password,phone\_num)
+    \item $R_2$ (phone\_num,full\_name,address)
     \item $\therefore$ The relation is in 3NF 
     \end{description}
 
