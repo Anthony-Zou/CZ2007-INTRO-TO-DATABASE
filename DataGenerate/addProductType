@@ -1,0 +1,28 @@
+USE [SSP1G7]
+GO
+
+USE [SSP1G7]
+GO
+
+Declare @Id int
+Set @Id = 1
+Declare @Description varchar(80)
+While @Id <= 50
+Begin 
+	Set @Description ='This is Product Type ' + CAST(@Id as nvarchar(10))
+   Insert Into [dbo].[PRODUCT_TYPE] values (@Id,NULL,@Description)
+   Print @Id
+   Set @Id = @Id + 1
+End
+
+While @Id <= 200
+Begin 
+   
+   Declare @parentId int 
+   set @parentId = FLOOR(RAND()*(@Id-1) )
+   Set @Description ='This is Product Type ' + CAST(@Id as nvarchar(10))+' and a child of '+CAST(@parentId as nvarchar(10))
+   Insert Into [dbo].[PRODUCT_TYPE] values (@Id,@parentId,@Description)
+   Print @Id
+   Set @Id = @Id + 1
+End
+GO
