@@ -1,0 +1,23 @@
+USE [SSP1G7]
+GO
+
+Declare @Id int
+Declare @Customer_id int
+Declare @date date
+Declare @Status varchar(10)
+
+Set @Id = 1
+
+While @Id <=2000
+Begin
+	Set @Customer_id = FLOOR(RAND()*2000)
+	Set @date = DateAdd(d, ROUND(DateDiff(d, '2020-01-01', '2021-12-31') * RAND(CHECKSUM(NEWID())), 0),
+      DATEADD(second,CHECKSUM(NEWID())%48000, '2020-01-01'))
+	Set @status =  'Processing'
+	
+	Insert Into [dbo].[ORDERS] values(@Id,@Customer_id,@date,@Status)
+
+	Set @Id = @Id + 1 
+End
+
+GO
