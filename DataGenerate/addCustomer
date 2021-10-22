@@ -1,0 +1,25 @@
+USE [SSP1G7]
+GO
+
+Declare @Id int
+Set @Id = 1
+
+While @Id <= 2000
+Begin 
+  
+   Declare @phoneNum int
+   Set @phoneNum = 80000000+FLOOR(RAND()*9000000)
+   
+   Insert Into [dbo].[CUSTOMER] values (
+   CAST(@Id as nvarchar(10)) ,
+   @phoneNum, 
+   'Username - ' + CAST(@Id as nvarchar(10)),
+   'Fullname - ' + CAST(@Id as nvarchar(10))+'@gmail.com',
+	 'password - ' + CAST(FLOOR(RAND()*10) as nvarchar(10)),
+	 'Fullname - ' + CAST(@Id as nvarchar(10)),
+   'Singapore - Street - ' + CAST(FLOOR(RAND()*10) as nvarchar(10)))
+   
+   Print @Id
+   Set @Id = @Id + 1
+End
+GO

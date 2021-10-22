@@ -1,0 +1,15 @@
+USE [SSP1G7]
+GO
+
+Declare @Id int
+Set @Id = 1
+
+While @Id <= 2000
+Begin 
+   Declare @shopName varchar(50)
+   Set @shopName ='ShopName - ' + CAST(@Id as nvarchar(10))
+   Insert Into [dbo].[SHOP] values (@Id,@shopName)
+   Print @Id
+   Set @Id = @Id + 1
+End
+GO

@@ -1,0 +1,30 @@
+USE [SSP1G7]
+GO
+
+Declare @Id int
+Set @Id = 1		   
+Declare @Shop_id  int
+Declare @Product_type_id  int
+Declare @Name varchar(50)
+Declare @Colour  varchar(10)
+Declare @Size  varchar(5)
+Declare @Price  real 
+Declare @Description  varchar(300)
+
+While @Id <= 2000
+Begin 
+Set @Shop_id  = 1
+Set @Product_type_id  = 1
+Set @Name = 1
+Set @Colour  = 1
+Set @Size  = 1
+Set @Price   = 1
+Set @Description = 1
+  
+   
+   Insert Into [dbo].[PRODUCT] values (@Id,@Shop_id,@Product_type_id,@Name,@Colour,@Size,@Price,@Description)
+   
+   Print @Id
+   Set @Id = @Id + 1
+End
+GO
