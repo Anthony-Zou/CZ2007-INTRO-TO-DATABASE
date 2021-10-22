@@ -1,0 +1,31 @@
+USE [SSP1G7]
+GO
+
+Declare @Id int
+Set @Id = 1	
+
+Declare @Shop_id  int
+Declare @Product_type_id  int
+
+
+
+While @Id <= 2000
+Begin 
+	   Set @Shop_id=@Id
+	   Set @Product_type_id=FLOOR(RAND()*200)
+	   Insert Into [dbo].[RESTRICTED_TO]
+	   values (@Shop_id,@Product_type_id)
+	   Set @Id = @Id + 1
+End
+Set @Id = 2000	
+While @Id <= 4000
+Begin 
+	   
+	   Set @Shop_id=FLOOR(RAND()*2000)
+	   Set @Product_type_id=FLOOR(RAND()*200)
+
+	   Insert Into [dbo].[RESTRICTED_TO]
+	   values (@Shop_id,@Product_type_id)
+	   Set @Id = @Id + 1
+End
+GO
