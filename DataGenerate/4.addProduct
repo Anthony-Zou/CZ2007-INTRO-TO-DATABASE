@@ -8,43 +8,45 @@ Declare @Product_type_id  int
 Declare @Name varchar(50)
 Declare @Colour  varchar(10)
 Declare @Size  varchar(5)
-Declare @Price  real 
+Declare @Price  int 
 Declare @Description  varchar(300)
 
 While @Id <= 2000
 Begin 
-Set @Shop_id  = FLOOR(RAND()*2000)
-Set @Product_type_id  = FLOOR(RAND()*200)
-Set @Name = 'Product Name - ' + CAST(@Id as nvarchar(10))
-Set @Colour  = 'Color Code - ' + FLOOR(RAND()*5)
+	Set @Shop_id  = FLOOR(RAND()*2000)
+	Set @Product_type_id  = FLOOR(RAND()*200)
+	Set @Name = 'Product Name - ' + CAST(@Id as nvarchar(10))
+	
 
-Declare @RandColor int
-Set @RandColor = FLOOR(RAND()*4)
-  CASE
-    WHEN @RandColor = 3 THEN Set @Colour = 'Red'
-      WHEN @RandColor = 2 THEN Set @Colour = 'Green'
-        WHEN @RandColor = 1 THEN Set @Colour = 'Blue'
-          ELSE Set @Colour = 'White'
-  END
+	Declare @RandColor int
+	Set @RandColor = FLOOR(RAND()*4)
+
+	Set @Colour= CASE 
+		WHEN @RandColor = 3 THEN 'Red'
+		WHEN @RandColor = 2 THEN 'Green'
+		WHEN @RandColor = 1 THEN 'Blue'
+		ELSE  'White'
+	  END
   
   
-Declare @RandSize int
-Set @RandSize = FLOOR(RAND()*3)
-  CASE
-    WHEN @RandSize = 3 THEN Set @Size = 'L'
-      WHEN @RandSize = 2 THEN Set @Size = 'M'
-        WHEN @RandSize = 1 THEN Set @Size = 'S'
-          ELSE Set @Size = 'S'
-  END
+	Declare @RandSize int
+	Set @RandSize = FLOOR(RAND()*3)
 
-Set @Price   = FLOOR(RAND()*300)
+	Set @Size =  CASE
+		WHEN @RandSize = 3 THEN 'L'
+		WHEN @RandSize = 2 THEN 'M'
+		WHEN @RandSize = 1 THEN 'S'
+		ELSE  'S'
+	  END
 
-Set @Description = 'Description for Product - ' + CAST(@Id as nvarchar(10))
+	Set @Price   = FLOOR(RAND()*300)
+
+	Set @Description = 'Description for Product - ' + CAST(@Id as nvarchar(10))
   
    
-   Insert Into [dbo].[PRODUCT] values (@Id,@Shop_id,@Product_type_id,@Name,@Colour,@Size,@Price,@Description)
+	   Insert Into [dbo].[PRODUCT] values (@Id,@Shop_id,@Product_type_id,@Name,@Colour,@Size,@Price,@Description)
    
-   Print @Id
-   Set @Id = @Id + 1
+	   Print @Id
+	   Set @Id = @Id + 1
 End
 GO
