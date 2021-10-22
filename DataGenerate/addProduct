@@ -13,13 +13,33 @@ Declare @Description  varchar(300)
 
 While @Id <= 2000
 Begin 
-Set @Shop_id  = 1
-Set @Product_type_id  = 1
-Set @Name = 1
-Set @Colour  = 1
-Set @Size  = 1
-Set @Price   = 1
-Set @Description = 1
+Set @Shop_id  = FLOOR(RAND()*2000)
+Set @Product_type_id  = FLOOR(RAND()*200)
+Set @Name = 'Product Name - ' + CAST(@Id as nvarchar(10))
+Set @Colour  = 'Color Code - ' + FLOOR(RAND()*5)
+
+Declare @RandColor int
+Set @RandColor = FLOOR(RAND()*4)
+  CASE
+    WHEN @RandColor = 3 THEN Set @Colour = 'Red'
+      WHEN @RandColor = 2 THEN Set @Colour = 'Green'
+        WHEN @RandColor = 1 THEN Set @Colour = 'Blue'
+          ELSE Set @Colour = 'White'
+  END
+  
+  
+Declare @RandSize int
+Set @RandSize = FLOOR(RAND()*3)
+  CASE
+    WHEN @RandSize = 3 THEN Set @Size = 'L'
+      WHEN @RandSize = 2 THEN Set @Size = 'M'
+        WHEN @RandSize = 1 THEN Set @Size = 'S'
+          ELSE Set @Size = 'S'
+  END
+
+Set @Price   = FLOOR(RAND()*300)
+
+Set @Description = 'Description for Product - ' + CAST(@Id as nvarchar(10))
   
    
    Insert Into [dbo].[PRODUCT] values (@Id,@Shop_id,@Product_type_id,@Name,@Colour,@Size,@Price,@Description)
