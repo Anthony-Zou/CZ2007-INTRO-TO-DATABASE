@@ -1,0 +1,29 @@
+GO
+Declare @Credit_card_num varchar(16)
+Declare @dateValid date
+Declare @dateExpire date
+declare @bank varchar(20)
+Declare @x int
+Declare @i int
+Set @i = 1
+
+While @i <=2000
+Begin
+	Set @Credit_card_num = left (( CONVERT(decimal(30,0) ,((( RAND() *999999999999 )/.00012345671) *999999999))),16)
+	Set @dateValid = dateadd(day,rand(checksum(newid()))*(datediff(day,'2017-01-01', '2019-12-31')),'2017-01-01');
+	Set @dateExpire = dateadd(day,rand(checksum(newid()))*(datediff(day,'2022-01-01', '2024-12-30')),'2022-01-01');
+	Set @x = FLOOR(RAND()*4-1+1)+1
+	Set @bank= CASE 
+		WHEN @x = 4 THEN 'HSCB'
+		WHEN @x = 3 THEN 'POSB'
+		WHEN @x = 2 THEN 'OCBC'
+		WHEN @x = 1 THEN 'MAYBANK'
+	end
+
+	Insert Into [dbo].[CREDIT_CARD](Card_num,Bank,Date_valid_from,Date_valid_to)
+	values(@Credit_card_num,@bank,@dateValid,@dateExpire)
+
+	Set @i = @i + 1 
+End
+
+GO
