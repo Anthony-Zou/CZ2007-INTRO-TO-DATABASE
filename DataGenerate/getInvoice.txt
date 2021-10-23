@@ -1,0 +1,38 @@
+GO
+Declare @number varchar(10)
+Declare @date date
+Declare @orderID_FK int
+Declare @x int
+Declare @i int
+Set @i = 1
+
+While @i <=2000
+Begin
+	Set @number = left (( CONVERT(decimal(30,0) ,((( RAND() *999999999999 )/.00012345671) *999999999))),10)
+	Set @x = FLOOR(RAND()*4-1+1)+1
+
+	Insert Into [dbo].[INVOICE](Number)
+	values(@number)
+
+	update INVOICE
+	set invoice.Order_id = (select o.Id
+	from ORDERS o 
+	where o.Customer_id = @i)
+	where INVOICE.Number = @number;
+
+	update INVOICE
+	set invoice.Date = (select o.Date
+	from ORDERS o 
+	where o.Customer_id = @i)
+	where INVOICE.Number = @number;
+
+	Set @x = (RAND()*6)
+
+	update INVOICE
+	set invoice.Date = DATEADD(day,@x,INVOICE.Date)
+	where INVOICE.Number = @number;
+
+	Set @i = @i + 1
+	
+End
+GO
