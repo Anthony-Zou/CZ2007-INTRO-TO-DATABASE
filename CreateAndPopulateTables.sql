@@ -1,9 +1,11 @@
-CREATE TABLE [CUSTOMER] ( 
+CREATE TABLE [CUSTOMER] (  
   [Id] INT, 
   [Phone_num] VARCHAR(8), 
   [Username] VARCHAR(30), 
   [Email] VARCHAR(50), 
-  [Password] VARCHAR(50), 
+  [Password] VARCHAR(50),
+  [Full_name] VARCHAR(30), 
+  [Address] VARCHAR(50),
   PRIMARY KEY ([Id]), 
 ); 
  
