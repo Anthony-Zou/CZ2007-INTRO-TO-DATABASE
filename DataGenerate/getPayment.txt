@@ -1,0 +1,41 @@
+Declare @Id int
+Declare @fk_order_id int
+Declare @fk_invoice_number varchar(10)
+Declare @payment_id int
+Declare @amount int
+Declare @fk_Credit_card_num varchar(16)
+Set @Id = 1
+
+While @Id <=1500
+Begin
+	
+	set @payment_id = @Id
+	set @fk_invoice_number = (select Number from INVOICE where Order_id = @Id)
+	set @fk_Credit_card_num = 
+	(select distinct Card_num
+	from CREDIT_CARD cc,CUSTOMER c,ORDERS o ,INVOICE i
+	where cc.Customer_id = c.Id and
+	c.Id = o.Customer_id and
+	o.Id = i.Order_id and
+	o.Id = @Id
+	)
+	set @amount =(Select SUM(orderItem.Product_unit_price*orderItem.Quantity) from INVOICE invoice, ORDER_ITEM orderItem
+							where invoice.Order_id=orderItem.Order_id and invoice.Number=@fk_invoice_number)
+
+	Insert Into [dbo].[PAYMENT](Id,Invoice_number,Credit_card_num,Amount)
+	values(@payment_id,@fk_invoice_number,@fk_Credit_card_num,@amount)
+	Set @Id = @Id + 1 
+
+	update INVOICE
+	set Status = 'paid'
+	from INVOICE
+	where Number=@fk_invoice_number;
+
+	update ORDER_ITEM
+	set Status ='paid'
+	from ORDER_ITEM orderitem,INVOICE invoice
+	where invoice.Number=@fk_invoice_number and invoice.Order_id=orderitem.Order_id
+
+End
+
+GO
