@@ -18,7 +18,7 @@ Begin
 	Set @bank= CASE 
 		WHEN @x = 4 THEN 'HSCB'
 		WHEN @x = 3 THEN 'POSB'
-		WHEN @x = 2 THEN 'OCBC'https://github.com/Anthony-Zou/CZ2007-INTRO-TO-DATABASE/blob/main/DataGenerate/getCreditCard.txt
+		WHEN @x = 2 THEN 'OCBC'
 		WHEN @x = 1 THEN 'MAYBANK'
 	end
 
