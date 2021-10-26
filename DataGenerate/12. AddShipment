@@ -1,0 +1,35 @@
+USE [SSP1G7]
+GO
+
+
+
+Declare @Id int
+Declare @Date date
+Declare @Tracking_num varchar(30)
+Declare @Sequence_num int
+Set @Id =1
+
+While @Id <=(select COUNT(Status) from ORDER_ITEM where Status='paid')
+Begin
+
+	Set @Tracking_num = left (( CONVERT(decimal(30,0) ,((( RAND() *999999999999 )/.00012345671) *999999999))),8)
+
+	Set @Date = null
+
+	Insert Into [dbo].[SHIPMENT] 
+	values(@id,@Date,@Tracking_num)
+
+	Set @Sequence_num=
+	(select Sequence_num 
+	from(select  ROW_NUMBER() OVER (ORDER BY Sequence_num ASC) 
+	AS rownumber,Sequence_num 
+	from ORDER_ITEM where Status='paid') 
+	As newtable where rownumber =@Id)
+
+	update ORDER_ITEM
+	set Shipment_id = @Id
+	from ORDER_ITEM
+	where Sequence_num=@Sequence_num;
+
+Set @Id=@Id+1
+End
