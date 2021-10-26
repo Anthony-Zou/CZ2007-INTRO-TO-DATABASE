@@ -1,0 +1,44 @@
+USE [SSP1G7]
+GO
+
+Declare @Sequence_num int
+Declare @Order_id int
+Declare @Product_id int
+Declare @Shipment_id int
+Declare @Quantity int
+Declare @Status  varchar(10)
+Declare @Product_unit_price  real
+Declare @Id int
+
+Set @Id = 1
+While @Id <=2000
+Begin
+	Set @Sequence_num=@Id
+	Set @Order_id=@Id
+	Set @Product_id = FLOOR(RAND()*2000)
+	Set @Shipment_id = NULL
+	Set @Quantity = FLOOR(RAND()*30)
+	Set @Status = 'unpaid'
+	Set @Product_unit_price = (Select Price from PRODUCT where Id=@Product_id)
+	Insert Into [dbo].[ORDER_ITEM] 
+	values(@Sequence_num,@Order_id,@Product_id,
+	@Shipment_id,@Quantity,@Status,@Product_unit_price)
+	Set @Id = @Id + 1 
+End
+While @Id <=4000
+Begin
+	Set @Sequence_num=@Id
+	Set @Order_id=FLOOR(RAND()*2000)
+	Set @Product_id = FLOOR(RAND()*2000)
+	Set @Shipment_id = NULL
+	Set @Quantity = FLOOR(RAND()*30)
+	Set @Status = 'unpaid'
+	Set @Product_unit_price = (Select Price from PRODUCT where Id=@Product_id)
+	Insert Into [dbo].[ORDER_ITEM] 
+	values(@Sequence_num,@Order_id,@Product_id,
+	@Shipment_id,@Quantity,@Status,@Product_unit_price)
+	Set @Id = @Id + 1 
+End
+GO
+
+
