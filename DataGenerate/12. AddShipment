@@ -2,22 +2,16 @@ USE [SSP1G7]
 GO
 
 
-
 Declare @Id int
+Declare @PaymentDate date
 Declare @Date date
 Declare @Tracking_num varchar(30)
 Declare @Sequence_num int
+
 Set @Id =1
 
 While @Id <=(select COUNT(Status) from ORDER_ITEM where Status='paid')
 Begin
-
-	Set @Tracking_num = left (( CONVERT(decimal(30,0) ,((( RAND() *999999999999 )/.00012345671) *999999999))),8)
-
-	Set @Date = null
-
-	Insert Into [dbo].[SHIPMENT] 
-	values(@id,@Date,@Tracking_num)
 
 	Set @Sequence_num=
 	(select Sequence_num 
@@ -25,6 +19,19 @@ Begin
 	AS rownumber,Sequence_num 
 	from ORDER_ITEM where Status='paid') 
 	As newtable where rownumber =@Id)
+
+	Set @PaymentDate=(select Date 
+	from ORDERS orders, ORDER_ITEM ordersItem 
+	where orders.Id=ordersItem.Order_id 
+		and ordersItem.Sequence_num=@Sequence_num)
+
+	Set @Date = dateadd(day,rand(checksum(newid()))*
+	(datediff(day,@PaymentDate, '2024-12-30')),@PaymentDate);
+
+	Set @Tracking_num = left (( CONVERT(decimal(30,0) ,((( RAND() *999999999999 )/.00012345671) *999999999))),8)
+	Insert Into [dbo].[SHIPMENT] 
+	values(@id,@Date,@Tracking_num)
+
 
 	update ORDER_ITEM
 	set Shipment_id = @Id
