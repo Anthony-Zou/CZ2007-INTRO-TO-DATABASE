@@ -1,0 +1,35 @@
+USE [SSP1G7]
+GO
+
+
+Declare @Id int
+Declare @Invoice_number varchar(10)
+Declare @Credit_card_num varchar(16)
+Declare @Amount real
+
+Set @Id=1
+While @Id <=1500
+Begin
+	Set @Invoice_number = FLOOR(RAND()*2000)
+	
+	Set @Credit_card_num = (Select creditCard.Card_num from INVOICE invoice, ORDERS orders,CREDIT_CARD creditCard
+							where invoice.Order_id=orders.Id and orders.Customer_id=creditCard.Customer_id and invoice.Number=@Invoice_number)
+	
+	Set @Amount = (Select SUM(orderItem.Product_unit_price*orderItem.Quantity) from INVOICE invoice, ORDER_ITEM orderItem
+							where invoice.Order_id=orderItem.Order_id and invoice.Number=@Invoice_number)
+	Set @Id = @Id + 1 
+
+	Insert Into [dbo].[PAYMENT] 
+	values(@id,@Invoice_number,@Credit_card_num,@Amount)
+
+	update INVOICE
+	set Status = 'paid'
+	from INVOICE
+	where Number=@Invoice_number;
+
+	update ORDER_ITEM
+	set Status ='paid'
+	from ORDER_ITEM orderitem,INVOICE invoice
+	where invoice.Number=@Invoice_number and invoice.Order_id=orderitem.Order_id
+
+End
