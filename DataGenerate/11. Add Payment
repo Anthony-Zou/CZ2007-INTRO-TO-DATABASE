@@ -17,7 +17,7 @@ Begin
 	
 	Set @Amount = (Select SUM(orderItem.Product_unit_price*orderItem.Quantity) from INVOICE invoice, ORDER_ITEM orderItem
 							where invoice.Order_id=orderItem.Order_id and invoice.Number=@Invoice_number)
-	Set @Id = @Id + 1 
+	
 
 	Insert Into [dbo].[PAYMENT] 
 	values(@id,@Invoice_number,@Credit_card_num,@Amount)
@@ -31,5 +31,5 @@ Begin
 	set Status ='paid'
 	from ORDER_ITEM orderitem,INVOICE invoice
 	where invoice.Number=@Invoice_number and invoice.Order_id=orderitem.Order_id
-
+	Set @Id = @Id + 1 
 End
