@@ -1,0 +1,24 @@
+USE [SSP1G7]
+GO
+
+
+
+Declare @Number varchar(10)
+Declare @Order_id int
+Declare @Date date
+Declare @Status varchar(10)
+Declare @Id int
+Set @Id = 1
+
+While @Id <=2000
+Begin
+
+	Set @Number=@Id
+	Set @Order_id=@Id
+	Set @Date=(Select Date from ORDERS where Id =@Order_id)
+	Set @Status ='unpaid'
+	Insert Into [dbo].[INVOICE]
+	values(@Number,@Order_id,@Date,@Status)
+	Set @Id = @Id + 1 
+
+End
