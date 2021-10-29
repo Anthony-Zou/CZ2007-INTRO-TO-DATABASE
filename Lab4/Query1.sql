@@ -23,5 +23,5 @@ FROM CUSTOMER
 JOIN ORDERS ON CUSTOMER.Id = ORDERS.Customer_id
 JOIN ORDER_ITEM ON ORDERS.Id = ORDER_ITEM.Order_id
 JOIN INVOICE ON INCOICE.Order_id = ORDERS.id
-WHERE CUSTOMER.Email = "abc@gmail.com"
-AND INVOICE.status ="paid";
+WHERE CUSTOMER.Email = 'abc@gmail.com'
+AND INVOICE.status ='paid';
