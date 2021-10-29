@@ -29,7 +29,7 @@ FROM(
         AND OI.Order_id IN (         --1. find the paid order
             SELECT O.id
             FROM ORDER O, INVOICE I
-            WHERE I.status = "paid"
+            WHERE I.status = 'paid'
             AND I.Order_id = O.id      
         )
         GROUP BY Product_type_id
