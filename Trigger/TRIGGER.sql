@@ -69,7 +69,7 @@ BEGIN
      WHERE I.Number = N.Invoice_number AND I.Order_id = OI.Order_Id;
      
      IF((sum + N.Amount) < Order_price)
-     THEN raise_exception('the third payment must fully pay')
+     THEN raise_exception('the third payment must fully pay');
 END;   
      
      
