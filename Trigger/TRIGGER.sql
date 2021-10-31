@@ -56,10 +56,23 @@ CREATE TRIGGER limitePaymentTrg
 BEFORE INSERT ON PAYMENT
 REFERENCING NEW ROW AS N
 FOR EACH ROW
-WHEN(
-    -- 是放在 when 还是放在 action
-)
-
+DECALRE Order_price FLOAT(10)
+DECALRE sum FLOAT(10)
+WHEN( (SELECT COUNT(*) FROM PAYMENT WHERE PAYMENT.Invoice_number = N.Invoice_number) = 2)  -- this is the 3d payment
+BEGIN
+     SELECT SUM(Amount) INTO sum
+     FROM PAYMENT
+     WHERE PAYMENT.Invoice_number = N.Invoice_number;
+     
+     SELECT SUM(OI.Product_unit_price * OI.Quantity) INTO Order_price
+     FROM ORDER_ITEM OI, INVOICE I
+     WHERE I.Number = N.Invoice_number AND I.Order_id = OI.Order_Id;
+     
+     IF((sum + N.Amount) < Order_price)
+     THEN raise_exception('the third payment must fully pay')
+END;   
+     
+     
 -- constraint 5
 
 CREATE TRIGGER canclePrecentTGR
