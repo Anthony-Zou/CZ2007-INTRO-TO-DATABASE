@@ -1,18 +1,23 @@
-CREATE TRIGGER invoiceStatusTGR  -- ADD A Order_price on ORDER table?
+CREATE TRIGGER invoiceStatusTGR  
 AFTER INSERT ON PAYMENT
 REFERECING NEW ROW AS N
 FOR EACH ROW
-WHEN (INVOICE.Id = N.Invoice_number 
-     AND INVOICE.Order_id = ORDERS.id
-     AND ORDERS.Id = (  
-        SELECT SUM(Amount)
-        FROM PAYMENT
-        WHERE Invoice_number = N.Invoice_number))
+WHEN (
+        (SELECT SUM(Product_unit_price * quantity)
+         FROM ORDER_ITEM
+         WHERE INVOICE.Number = PAYMENT.Invoice_number
+         AND   ORDER_ITEM.Order_id = INVOICE.Order_id)
+         =
+        (SELECT SUM(Amount)
+         FROM PAYMENT
+         WHERE PAYMENT.Invoice_number = N.Invoice_number
+        )
+    ) 
 BEGIN
     UPDATE INVOICE
-    SET Status = "paid"
+    SET Status = 'paid'
     WHERE INVOICE.Id = N.Invoice_number
-END;
+END;     
 
 
 
