@@ -1,0 +1,14 @@
+/*
+Find which restricted Product has been order and their quantity
+*/
+select oi.Product_id,sum(oi.Quantity) as restrictedOrderQty
+from ORDER_ITEM oi
+where oi.Product_id in(
+(select p.Id
+from SHOP s,PRODUCT p,PRODUCT_TYPE pt,RESTRICTED_TO rt
+where s.Id = p.Id and
+p.Product_type_id = pt.Id and
+pt.Id = rt.Product_type_id and
+s.Id = rt.Shop_id)
+) group by oi.Product_id
+order by restrictedOrderQty;
