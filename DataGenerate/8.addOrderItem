@@ -17,7 +17,7 @@ Begin
 	Set @Order_id=@Id
 	Set @Product_id = FLOOR(RAND()*2000)
 	Set @Shipment_id = NULL
-	Set @Quantity = FLOOR(RAND()*30)
+	Set @Quantity = 1+FLOOR(RAND()*29)
 	Set @Status = 'processing'
 	Set @Product_unit_price = (Select Price from PRODUCT where Id=@Product_id)
 	Insert Into [dbo].[ORDER_ITEM] 
@@ -31,7 +31,7 @@ Begin
 	Set @Order_id=FLOOR(RAND()*2000)
 	Set @Product_id = FLOOR(RAND()*2000)
 	Set @Shipment_id = NULL
-	Set @Quantity = FLOOR(RAND()*30)
+	Set @Quantity = 1+FLOOR(RAND()*29)
 	Set @Status = 'processing'
 	Set @Product_unit_price = (Select Price from PRODUCT where Id=@Product_id)
 	Insert Into [dbo].[ORDER_ITEM] 
