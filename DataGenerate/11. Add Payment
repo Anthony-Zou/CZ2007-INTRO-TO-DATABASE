@@ -16,7 +16,7 @@ Begin
 							where invoice.Order_id=orders.Id and orders.Customer_id=creditCard.Customer_id and invoice.Number=@Invoice_number)
 	
 	Set @Amount = (Select SUM(orderItem.Product_unit_price*orderItem.Quantity) from INVOICE invoice, ORDER_ITEM orderItem
-							where invoice.Order_id=orderItem.Order_id and invoice.Number=@Invoice_number)
+							where invoice.Order_id=orderItem.Order_id and invoice.Number=@Invoice_number and orderItem.Status <> 'out of stock'  )
 	
 
 	Insert Into [dbo].[PAYMENT] 
