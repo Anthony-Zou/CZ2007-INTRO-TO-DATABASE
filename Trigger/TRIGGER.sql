@@ -23,16 +23,30 @@ END;
 
 -- constraints 2
 
-CREATE TRIGGER orderItemStatusTGR
-AFTER INSERT ON SHIPMENT --这里没用 order_item 的 update 是因为
-REFERENCING NEW ROW AS N
-FOR EACH ROW
--- no need condition right?
+-- CREATE TRIGGER orderItemStatusTGR
+-- AFTER INSERT ON SHIPMENT --这里没用 order_item 的 update 是因为
+-- REFERENCING NEW ROW AS N
+-- FOR EACH ROW
+-- -- no need condition right?
+-- BEGIN
+--     UPDATE ORDER_ITEM
+--     SET Status = "shipped"
+--     WHERE ORDER_ITEM.Shipment_id = N.Id
+-- END;
+
+TRIGGER 2 MS SQL:
+CREATE TRIGGER orderItemStatusTGR 
+   ON  SHIPMENT
+   AFTER INSERT
+AS 
 BEGIN
-    UPDATE ORDER_ITEM
-    SET Status = "shipped"
-    WHERE ORDER_ITEM.Shipment_id = N.Id
-END;
+  UPDATE ORDER_ITEM
+    SET Status = 'shipped'
+  FROM inserted
+    WHERE ORDER_ITEM.Shipment_id = inserted.Id
+
+END
+GO
 
 -- constraint 3
 
