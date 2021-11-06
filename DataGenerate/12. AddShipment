@@ -34,7 +34,12 @@ Begin
 
 
 	update ORDER_ITEM
-	set Shipment_id = @Id, Status='shipped'
+	set Shipment_id = @Id
+	from ORDER_ITEM
+	where Sequence_num=@Sequence_num;
+	
+	update ORDER_ITEM
+	set Status = 'shipped'
 	from ORDER_ITEM
 	where Sequence_num=@Sequence_num;
 
