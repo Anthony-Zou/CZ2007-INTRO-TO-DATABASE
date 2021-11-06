@@ -30,7 +30,7 @@ CREATE TABLE [SHOP] (
  
 CREATE TABLE [PRODUCT_TYPE] ( 
   [Id] INT NOT NULL, 
-  [Parent_id] INT NOT NULL,
+  [Parent_id] INT,
   [Description] VARCHAR(300) NOT NULL, 
   PRIMARY KEY ([Id]), 
   FOREIGN KEY (Parent_id) REFERENCES PRODUCT_TYPE(Id)
