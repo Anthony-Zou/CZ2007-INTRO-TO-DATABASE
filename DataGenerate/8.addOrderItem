@@ -15,7 +15,7 @@ While @Id <=2000
 Begin
 	Set @Sequence_num=@Id
 	Set @Order_id=@Id
-	Set @Product_id = FLOOR(RAND()*2000)
+	Set @Product_id = 1+FLOOR(RAND()*1999)
 	Set @Shipment_id = NULL
 	Set @Quantity = 1+FLOOR(RAND()*29)
 	Set @Status = 'processing'
@@ -28,8 +28,8 @@ End
 While @Id <=4000
 Begin
 	Set @Sequence_num=@Id
-	Set @Order_id=FLOOR(RAND()*2000)
-	Set @Product_id = FLOOR(RAND()*2000)
+	Set @Order_id=1+FLOOR(RAND()*1999)
+	Set @Product_id = 1+FLOOR(RAND()*1999)
 	Set @Shipment_id = NULL
 	Set @Quantity = 1+FLOOR(RAND()*29)
 	Set @Status = 'processing'
