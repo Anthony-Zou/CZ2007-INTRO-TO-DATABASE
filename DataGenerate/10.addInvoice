@@ -16,7 +16,7 @@ Begin
 	Set @Number=@Id
 	Set @Order_id=@Id
 	Set @Date=(Select Date from ORDERS where Id =@Order_id)
-	Set @Status ='unpaid'
+	Set @Status ='processing'
 	Insert Into [dbo].[INVOICE]
 	values(@Number,@Order_id,@Date,@Status)
 	Set @Id = @Id + 1 
