@@ -48,9 +48,12 @@ CREATE VIEW [togetherTable] AS
 FROM ORDER_ITEM O1, ORDER_ITEM O2
 WHERE O1.Order_id = O2.ORDER_id 
 AND   O1.Product_id <> O2.Product_id
+--and O1.Product_id < O2.Product_id --this line to remove mirror pairs in bottom
 GROUP BY O1.Product_id, O2.Product_id)
 
-
+//A B
+//B A
+//remove B A
 SELECT O1.Product_id, O2.Product_id   -- MIGHT HAVE DUPLICATE...
 FROM togetherTable
 WHERE togetherTimes IN (
