@@ -1,1 +1,14 @@
 
+USE [SSP1G7]
+GO
+
+Declare @Id int
+Set @Id = 1
+Declare @seq int
+While @Id <=600
+Begin
+	SET @seq = 1+FLOOR(RAND()*1999)
+	UPDATE ORDER_ITEM SET Status = 'out of stock' WHERE Sequence_num= @seq;
+	Set @Id = @Id + 1 
+End
+GO
