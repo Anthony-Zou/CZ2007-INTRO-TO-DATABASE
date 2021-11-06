@@ -55,3 +55,16 @@ FROM(
     ORDER BY Sales DESC
 );
 */
+--TESTED WITH RANDOM DATA
+SELECT TOP 3*
+FROM(
+SELECT Product_type_id,sum(quantity) as totalSales
+FROM ORDER_ITEM oi,PRODUCT p
+WHERE oi.Product_id = p.Id
+and oi.Order_id in (
+SELECT O.id
+FROM ORDERS O, INVOICE I
+WHERE I.status = 'paid'
+AND I.Order_id = O.id
+)GROUP BY Product_type_id) as productSalesTable
+ORDER BY totalSales DESC;
