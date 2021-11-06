@@ -43,20 +43,18 @@ GROUP BY ITEMS.Product_id
 
 --- !!! new query4 !!!---
 
-CREATE VIEW [togetherTable] AS
-(SELECT O1.Product_id, O2.Product_id, COUNT(*) AS togetherTimes
+WITH [togetherTable] AS
+(SELECT O1.Product_id as P1, O2.Product_id as P2, COUNT(*) AS togetherTimes
 FROM ORDER_ITEM O1, ORDER_ITEM O2
 WHERE O1.Order_id = O2.ORDER_id 
 AND   O1.Product_id <> O2.Product_id
-and O1.Product_id < O2.Product_id --this line to remove mirror pairs in bottom
+and O1.Product_id < O2.Product_id 
 GROUP BY O1.Product_id, O2.Product_id)
 
-//A B
-//B A
-//remove B A
-SELECT O1.Product_id, O2.Product_id   -- MIGHT HAVE DUPLICATE...
+
+SELECT P1, P2  
 FROM togetherTable
 WHERE togetherTimes IN (
     SELECT MAX(togetherTimes)
     FROM togetherTable T2
-)
+);
