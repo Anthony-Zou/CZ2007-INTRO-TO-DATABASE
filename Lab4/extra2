@@ -1,0 +1,10 @@
+/*
+Display usage of banks credit card to pay for invoices of orders
+*/
+select cc.Bank,count(*) as usage
+from CREDIT_CARD cc,PAYMENT p,invoice i,ORDERS o
+where
+cc.Card_num = p.Credit_card_num and
+p.Invoice_number = i.Number and
+i.Order_id = o.Id
+group by cc.Bank;
