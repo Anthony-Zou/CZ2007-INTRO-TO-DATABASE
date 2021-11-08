@@ -12,4 +12,3 @@ WHERE PT2.Parent_id IN (
     WHERE PT1.Parent_id is NULL
 );
 
-)
