@@ -1,120 +1,124 @@
 CREATE TABLE [CUSTOMER] (  
-  [Id] INT, 
-  [Phone_num] VARCHAR(8), 
-  [Username] VARCHAR(30), 
-  [Email] VARCHAR(50), 
-  [Password] VARCHAR(50),
-  [Full_name] VARCHAR(30), 
-  [Address] VARCHAR(50),
+  [Id] INT NOT NULL 
+  [Phone_num] VARCHAR(8) NOT NULL, 
+  [Username] VARCHAR(30) UNIQUE NOT NULL, 
+  [Email] VARCHAR(50) UNIQUE NOT NULL, 
+  [Password] VARCHAR(50) NOT NULL,
+  [Full_name] VARCHAR(30) NOT NULL, 
+  [Address] VARCHAR(50) NOT NULL,
   PRIMARY KEY ([Id]), 
 ); 
  
 CREATE TABLE [CREDIT_CARD] ( 
-  [Card_num] VARCHAR(16), 
-  [Customer_id] INT, 
-  [Bank] VARCHAR(20), 
-  [Date_valid_to] DATE, 
-  [Date_valid_from] DATE, 
-  PRIMARY KEY ([Card_num]), 
+  [Card_num] VARCHAR(16) NOT NULL, 
+  [Customer_id] INT NOT NULL,                               
+  [Bank] VARCHAR(20) NOT NULL, 
+  [Date_valid_to] DATE NOT NULL, 
+  [Date_valid_from] DATE NOT NULL, 
+  PRIMARY KEY ([Card_num]),  
   FOREIGN KEY (Customer_id) REFERENCES CUSTOMER(Id) 
-  ON DELETE CASCADE 
-  ON UPDATE CASCADE 
+  ON DELETE NO ACTION    
+  ON UPDATE NO ACTION
 ); 
  
 CREATE TABLE [SHOP] ( 
-  [Id] INT, 
-  [Name] VARCHAR(50), 
-  PRIMARY KEY ([Id]) 
+  [Id] INT NOT NULL, 
+  [Name] VARCHAR(50) NOT NULL,
+  PRIMARY KEY ([Id]),  
 ); 
  
  
 CREATE TABLE [PRODUCT_TYPE] ( 
-  [Id] INT, 
-  [Parent_id] INT, 
-  [Description] VARCHAR(300), 
+  [Id] INT NOT NULL, 
+  [Parent_id] INT ,  -- can be null
+  [Description] VARCHAR(300) NOT NULL, 
   PRIMARY KEY ([Id]), 
-  FOREIGN KEY (Parent_id) REFERENCES PRODUCT_TYPE(Id) 
+  FOREIGN KEY (Parent_id) REFERENCES PRODUCT_TYPE(Id)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION
 ); 
  
 CREATE TABLE [RESTRICTED_TO] ( 
-  [Shop_id] INT, 
-  [Product_type_id] INT, 
+  [Shop_id] INT NOT NULL, 
+  [Product_type_id] INT NOT NULL, 
   PRIMARY KEY ([Shop_id], [Product_type_id]), 
   FOREIGN KEY (Shop_id) REFERENCES SHOP(Id) 
-  ON DELETE CASCADE 
-  ON UPDATE CASCADE, 
+  ON DELETE NO ACTION 
+  ON UPDATE NO ACTION, 
   FOREIGN KEY (Product_type_id) REFERENCES PRODUCT_TYPE(Id) 
-  ON DELETE CASCADE 
-  ON UPDATE CASCADE 
+  ON DELETE NO ACTION 
+  ON UPDATE NO ACTION 
 ); 
  
  
 CREATE TABLE [PRODUCT] ( 
-  [Id] INT, 
-  [Shop_id] INT, 
-  [Product_type_id] INT, 
-  [Name] VARCHAR(50), 
-  [Colour] VARCHAR(10), 
-  [Size] VARCHAR(5), 
-  [Price] FLOAT(7), 
-  [Description] VARCHAR(300), 
+  [Id] INT NOT NULL, 
+  [Shop_id] INT NOT NULL, 
+  [Product_type_id] INT NOT NULL,  
+  [Name] VARCHAR(50) NOT NULL, 
+  [Colour] VARCHAR(10) NOT NULL, 
+  [Size] VARCHAR(5) NOT NULL, 
+  [Price] FLOAT(7)NOT NULL, 
+  [Description] VARCHAR(300) NOT NULL, 
   PRIMARY KEY ([Id]), 
   FOREIGN KEY (Shop_id) REFERENCES SHOP(Id) 
-  ON DELETE CASCADE 
-  ON UPDATE CASCADE, 
+  ON DELETE NO ACTION 
+  ON UPDATE NO ACTION, 
   FOREIGN KEY (Product_type_id) REFERENCES PRODUCT_TYPE(Id) 
   ON DELETE NO ACTION 
-  ON UPDATE CASCADE 
+  ON UPDATE NO ACTION 
 ); 
  
 CREATE TABLE [PHOTO] ( 
-  [Seq] INT, 
-  [Product_id] INT, 
-  [Url] VARCHAR(50), 
+  [Seq] INT NOT NULL, 
+  [Product_id] INT NOT NULL, 
+  [Url] VARCHAR(50) NOT NULL, 
   PRIMARY KEY ([Seq], [Product_id]), 
   FOREIGN KEY (Product_id) REFERENCES PRODUCT(Id) 
-  ON DELETE CASCADE 
-  ON UPDATE CASCADE 
+  ON DELETE NO ACTION 
+  ON UPDATE NO ACTION
 ); 
  
 CREATE TABLE [SHIPMENT] ( 
-  [Id] INT, 
-  [Date] DATE, 
-  [Tracking_num] VARCHAR(30), 
-  PRIMARY KEY ([Id]) 
+  [Id] INT NOT NULL, 
+  [Date] DATE NOT NULL, 
+  PRIMARY KEY ([Id]), 
+  [Tracking_num] VARCHAR(30) UNIQUE,
 ); 
  
 CREATE TABLE [ORDERS] ( 
-  [Id] INT, 
-  [Customer_id] INT, 
-  [Date] DATE, 
-  [Status] VARCHAR(10), 
-  PRIMARY KEY ([Id]), 
+  [Id] INT NOT NULL, 
+  [Customer_id] INT NOT NULL, 
+  [Date] DATE NOT NULL, 
+  [Status] VARCHAR(10) DEFAULT 'processing',
+  PRIMARY KEY ([Id]),   
   FOREIGN KEY (Customer_id) REFERENCES CUSTOMER(Id) 
-  ON DELETE NO ACTION 
-  ON UPDATE CASCADE 
+  ON DELETE NO ACTION  
+  ON UPDATE NO ACTION 
 ); 
  
 CREATE TABLE [INVOICE] ( 
-  [Number] VARCHAR(10), 
-  [Order_id] INT, 
-  [Date] DATE, 
-  [Status] VARCHAR(10), 
+  [Number] VARCHAR(10) NOT NULL, 
+  [Order_id] INT NOT NULL, 
+  [Date] DATE NOT NULL,  
+  [Status] VARCHAR(10) DEFAULT 'issued',
   PRIMARY KEY ([Number]), 
+
   FOREIGN KEY (Order_id) REFERENCES ORDERS(Id) 
-  ON DELETE CASCADE 
-  ON UPDATE CASCADE 
+  ON DELETE NO ACTION 
+  ON UPDATE NO ACTION
 ); 
  
 CREATE TABLE [PAYMENT] ( 
   [Id] INT, 
-  [Invoice_number] VARCHAR(10), 
-  [Credit_card_num] VARCHAR(16), 
-  [Amount] FLOAT(10), 
+  [Invoice_number] VARCHAR(10) NOT NULL, 
+  [Credit_card_num] VARCHAR(16) NOT NULL, 
+  [Amount] FLOAT(10) NOT NULL, 
   PRIMARY KEY ([Id]), 
-  FOREIGN KEY (Invoice_number) REFERENCES INVOICE(Number) 
-  ON DELETE CASCADE 
-  ON UPDATE CASCADE, 
+
+  FOREIGN KEY (Invoice_number) REFERENCES INVOICE(Number)  
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION, 
   FOREIGN KEY (Credit_card_num) REFERENCES CREDIT_CARD(Card_num) 
   ON DELETE NO ACTION 
   ON UPDATE NO ACTION 
@@ -123,17 +127,18 @@ CREATE TABLE [PAYMENT] (
 CREATE TABLE [ORDER_ITEM] ( 
   [Sequence_num] INT, 
   [Order_id] INT, 
-  [Product_id] INT, 
-  [Shipment_id] INT, 
-  [Quantity] INT, 
-  [Status] VARCHAR(10), 
-  [Product_unit_price] FLOAT(7), 
+  [Product_id] INT NOT NULL, 
+  [Shipment_id] INT ,
+  [Quantity] INT NOT NULL, 
+  [Status] VARCHAR(20) DEFAULT 'processing', 
+  [Product_unit_price] FLOAT(7) not null, 
   PRIMARY KEY ([Sequence_num], [Order_id]), 
+
   FOREIGN KEY (Order_id) REFERENCES ORDERS(Id) 
-  ON DELETE CASCADE 
-  ON UPDATE CASCADE, 
+  ON DELETE NO ACTION   
+  ON DELETE NO ACTION, 
   FOREIGN KEY (Product_id) REFERENCES PRODUCT(Id) 
-  ON DELETE NO ACTION 
+  ON DELETE NO ACTION  
   ON UPDATE NO ACTION, 
   FOREIGN KEY (Shipment_id) REFERENCES SHIPMENT(Id)  
   ON DELETE NO ACTION 
