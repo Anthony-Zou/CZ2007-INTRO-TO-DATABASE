@@ -1,0 +1,91 @@
+ALTER TRIGGER [dbo].[thirdPaymentFull]
+   ON  [dbo].[PAYMENT]
+   AFTER INSERT
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	--FORCE third payment to order be the raminder left
+	
+	Declare @paymentInvoiceNum varchar(10);
+	Declare @orderID int;
+	Declare @total float;
+	Declare @paid float;
+	Declare @remainder float;
+	Declare @status varchar(10);
+	Declare @NewpaymentID int;
+	
+
+	
+	set @orderID = (select distinct i.Order_id
+	from inserted , INVOICE i
+	where inserted.Invoice_number = i.Number)
+
+	if((select count(*)
+	from INVOICE i,ORDERS o,PAYMENT p
+	where p.Invoice_number = i.Number and
+	i.Order_id = o.Id and
+	o.Id = @orderID) = 3)
+	begin
+
+
+
+		set @total =(select sum(ORDER_ITEM.Quantity * ORDER_ITEM.Product_unit_price)
+		from ORDER_ITEM
+		where ORDER_ITEM.Order_id = @orderID)
+
+		set @paymentInvoiceNum = (select inserted.Invoice_number from inserted)
+
+
+		set @paid = (select sum(payment.amount)
+					from PAYMENT
+					where PAYMENT.Invoice_number = @paymentInvoiceNum
+		)
+		--current remainder after 3rd insert
+		set @remainder = @total - @paid
+
+		--if status is paid no more payment requied
+		set @status = (select status from INVOICE where INVOICE.Order_id = @orderID)
+
+				--make sure the on third payment total is paid
+					if(@remainder < 0)
+					begin
+						update PAYMENT
+						set Amount = @remainder + inserted.Amount
+						from inserted
+						where PAYMENT.Id = inserted.Id 
+						and @remainder < 0
+					
+					end
+
+					else
+					begin
+					update PAYMENT
+						set Amount = Payment.Amount + @remainder
+						from inserted
+						where PAYMENT.Id = inserted.Id 
+						and @remainder >= 0
+					end
+				
+		end
+		--ensure 4th insert and above cannot
+		if((select count(*)
+			from INVOICE i,ORDERS o,PAYMENT p
+			where p.Invoice_number = i.Number and
+			i.Order_id = o.Id and
+			o.Id = @orderID) > 3)
+			begin
+
+				select id from PAYMENT
+
+				set @NewpaymentID = (select id from inserted)
+
+				delete from PAYMENT
+				where PAYMENT.Id = @NewpaymentID
+			end
+	
+
+END
