@@ -1,0 +1,70 @@
+insert into CUSTOMER
+values
+(1,'111111','customer1','customer1@gmail.com',12345,'fullname1','address1'),
+(2,'222222','customer2','customer2@gmail.com',12345,'fullname2','address2'),
+(3,'333333','customer3','customer3@gmail.com',12345,'fullname3','address3');
+
+
+insert into CREDIT_CARD
+values
+('11111111',1,'posb','2018-01-01','2023-11-21'),
+('22222222',2,'posb','2018-02-02','2023-11-22'),
+('33333333',3,'ocbc','2018-03-03','2023-11-23');
+
+
+insert into SHOP
+values
+(1,'shop1'),
+(2,'shop2'),
+(3,'shop3'),
+(4,'shop4'),
+(5,'shop5');
+
+insert into PRODUCT_TYPE
+values
+(1,null,'product1 parent is null'),
+(2,1,'product2 parent is product1'),
+(3,2,'product3 parent is product2'),
+(4,null,'product4 parent is null');
+
+insert into RESTRICTED_TO
+values
+(4,4);
+
+insert into PRODUCT
+values
+(1,1,1,'product1','red','s',100,'prod1 description'),
+(2,2,2,'product2','blue','m',200,'prod2 description'),
+(3,3,2,'product3','green','l',300,'prod3 description'),
+(4,1,3,'product4','red','s',400,'prod4 description'),
+(5,2,3,'product5','blue','m',500,'prod5 description'),
+(6,1,3,'product6','green','l',600,'prod6 description'),
+--both in shop 4
+(7,4,4,'product7','black','l',700,'prod7 description'),
+(8,4,4,'product7','black','l',700,'prod7 description');
+
+insert into PHOTO
+values
+(1,1,'Product1-pic1'),
+(1,2,'Product2-pic1'),
+(1,3,'Product3-pic1'),
+(1,4,'Product4-pic1'),
+(1,5,'Product5-pic1'),
+(1,6,'Product6-pic1'),
+(1,7,'Product7-pic1');
+
+insert into ORDERS
+values
+(1,1,'2021-11-01','processing'),
+(2,2,'2021-11-02','processing');
+
+insert into ORDER_ITEM
+values
+(1,1,1,null,1,'processing',100),
+(1,2,2,null,1,'processing',200),
+(2,2,3,null,1,'processing',300);
+
+insert into INVOICE
+values
+(1,1,'2021-11-01','issue'),
+(2,2,'2021-11-02','issue');
