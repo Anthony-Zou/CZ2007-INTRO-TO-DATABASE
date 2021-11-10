@@ -12,12 +12,12 @@ WHERE PT2.Parent_id IN (
     WHERE PT1.Parent_id is NULL
 );
 
---if consider product lvl 3 is relative as second lvl from lvl 2
-SELECT PT2.description                 ---2. find those whose parent_id are in 1st level product type then they are 2nd level
-FROM PRODUCT_TYPE PT2
-WHERE PT2.Id IN (
-    SELECT PT1.Id             ---1. find the 1st level product type (who doesn't have parent type)
-    FROM PRODUCT_TYPE PT1
-    WHERE PT1.Parent_id is not NULL
-);
+-- --if consider product lvl 3 is relative as second lvl from lvl 2
+-- SELECT PT2.description                 ---2. find those whose parent_id are in 1st level product type then they are 2nd level
+-- FROM PRODUCT_TYPE PT2
+-- WHERE PT2.Id IN (
+--     SELECT PT1.Id             ---1. find the 1st level product type (who doesn't have parent type)
+--     FROM PRODUCT_TYPE PT1
+--     WHERE PT1.Parent_id is not NULL
+-- );
 
