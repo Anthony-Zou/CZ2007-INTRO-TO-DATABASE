@@ -192,7 +192,6 @@ BEGIN
 			end  
 END
 
-
 ALTER TRIGGER [dbo].[thirdPaymentFull]
    ON  [dbo].[PAYMENT]
    AFTER INSERT
@@ -262,11 +261,8 @@ BEGIN
 			begin
 
 				--select id from PAYMENT
-
-				set @NewpaymentID = (select id from inserted)
-
-				delete from PAYMENT
-				where PAYMENT.Id = @NewpaymentID 
+			RAISERROR('Max 3 payment only',16,2);
+			ROLLBACK TRANSACTION
 				
 				end
 			end  
