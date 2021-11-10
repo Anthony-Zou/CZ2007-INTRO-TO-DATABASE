@@ -8,8 +8,6 @@ Declare @seq int
 While @Id <=600
 Begin
 	SET @seq = 1+FLOOR(RAND()*1999)
-	UPDATE ORDER_ITEM SET Status = 'out of stock' WHERE Order_id= @seq;
+	UPDATE ORDER_ITEM SET Status = 'out of stock' WHERE Order_id= @seq and Sequence_num=1;
 	Set @Id = @Id + 1 
 End
-GO
-
