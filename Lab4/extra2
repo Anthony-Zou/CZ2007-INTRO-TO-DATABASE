@@ -8,3 +8,15 @@ cc.Card_num = p.Credit_card_num and
 p.Invoice_number = i.Number and
 i.Order_id = o.Id
 group by cc.Bank;
+
+
+SELECT TOP 3*
+FROM
+(SELECT O2.Customer_id, COUNT(DISTINCT OI1.Product_id) AS similarity
+FROM ORDERS O1, ORDERS O2, ORDER_ITEM OI1, ORDER_ITEM OI2, INVOICE I1, INVOICE I2
+WHERE O1.Customer_id=1065 AND O2.Customer_id!=1065 
+AND OI1.Order_id=O1.Id AND OI2.Order_id = O2.Id AND I1.Order_id=O1.Id AND I2.Order_id = O2.Id
+AND I1.status='paid' AND I2.Status = 'paid'
+AND OI1.Product_id=OI2.Product_id
+GROUP BY O2.Customer_id) 
+ORDER BY similarity;
