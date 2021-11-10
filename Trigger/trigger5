@@ -1,0 +1,36 @@
+ALTER TRIGGER [dbo].[canclePrecentTGR]
+   ON [dbo].[ORDERS]
+   After UPDATE
+AS
+BEGIN
+ -- SET NOCOUNT ON added to prevent extra result sets from
+ -- interfering with SELECT statements.
+ SET NOCOUNT ON;
+ IF(EXISTS(
+ --check updated table
+  select *
+  from INVOICE,PAYMENT,deleted
+  where PAYMENT.Invoice_number = INVOICE.Number and
+  INVOICE.Order_id = deleted.Id
+ ))
+ begin
+ --revert the changes as not allow to be cancel
+ --since have invoice payment existance
+ update ORDERS
+ set ORDERS.Status = deleted.Status
+ from deleted
+ where ORDERS.Id = deleted.Id
+ end
+ ELSE
+ begin
+ --allow order status to be cancelle
+ update ORDERS
+ set ORDERS.Status = 'cancelled'
+ from inserted
+ where ORDERS.Id = inserted.Id
+ 
+ 
+ end
+    -- Insert statements for trigger here
+ 
+END
