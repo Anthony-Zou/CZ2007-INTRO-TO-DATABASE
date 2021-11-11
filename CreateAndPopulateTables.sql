@@ -1,5 +1,5 @@
 CREATE TABLE [CUSTOMER] (  
-  [Id] INT NOT NULL, 
+  [Id] INT NOT NULL 
   [Phone_num] VARCHAR(8) NOT NULL, 
   [Username] VARCHAR(30) UNIQUE NOT NULL, 
   [Email] VARCHAR(50) UNIQUE NOT NULL, 
@@ -17,8 +17,8 @@ CREATE TABLE [CREDIT_CARD] (
   [Date_valid_from] DATE NOT NULL, 
   PRIMARY KEY ([Card_num]),  
   FOREIGN KEY (Customer_id) REFERENCES CUSTOMER(Id) 
-  ON DELETE NO ACTION    
-  ON UPDATE NO ACTION
+  ON DELETE SET NULL
+  ON UPDATE CASCADE
 ); 
  
 CREATE TABLE [SHOP] ( 
@@ -30,12 +30,12 @@ CREATE TABLE [SHOP] (
  
 CREATE TABLE [PRODUCT_TYPE] ( 
   [Id] INT NOT NULL, 
-  [Parent_id] INT ,  -- can be null
+  [Parent_id] INT , 
   [Description] VARCHAR(300) NOT NULL, 
   PRIMARY KEY ([Id]), 
   FOREIGN KEY (Parent_id) REFERENCES PRODUCT_TYPE(Id)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION
+  ON DELETE SET NULL
+  ON UPDATE CASCADE 
 ); 
  
 CREATE TABLE [RESTRICTED_TO] ( 
@@ -43,11 +43,11 @@ CREATE TABLE [RESTRICTED_TO] (
   [Product_type_id] INT NOT NULL, 
   PRIMARY KEY ([Shop_id], [Product_type_id]), 
   FOREIGN KEY (Shop_id) REFERENCES SHOP(Id) 
-  ON DELETE NO ACTION 
-  ON UPDATE NO ACTION, 
+  ON DELETE CASCADE
+  ON UPDATE CASCADE, 
   FOREIGN KEY (Product_type_id) REFERENCES PRODUCT_TYPE(Id) 
-  ON DELETE NO ACTION 
-  ON UPDATE NO ACTION 
+  ON DELETE CASCADE 
+  ON UPDATE CASCADE
 ); 
  
  
@@ -58,15 +58,15 @@ CREATE TABLE [PRODUCT] (
   [Name] VARCHAR(50) NOT NULL, 
   [Colour] VARCHAR(10) NOT NULL, 
   [Size] VARCHAR(5) NOT NULL, 
-  [Price] FLOAT(7)NOT NULL, 
+  [Price] FLOAT(7)NOT NULL CHECK(Price > 0), 
   [Description] VARCHAR(300) NOT NULL, 
   PRIMARY KEY ([Id]), 
   FOREIGN KEY (Shop_id) REFERENCES SHOP(Id) 
-  ON DELETE NO ACTION 
-  ON UPDATE NO ACTION, 
+  ON DELETE NO ACTION       -- A product must have a shop_id, we set NO ACTION to prevent from deleting shop_id this action
+  ON UPDATE CASCADE, 
   FOREIGN KEY (Product_type_id) REFERENCES PRODUCT_TYPE(Id) 
-  ON DELETE NO ACTION 
-  ON UPDATE NO ACTION 
+  ON DELETE NO ACTION       -- A product must have a Product_type_id, we set NO ACTION to prevent from deleting Product_type_id this action  
+  ON UPDATE CASCADE
 ); 
  
 CREATE TABLE [PHOTO] ( 
@@ -75,8 +75,8 @@ CREATE TABLE [PHOTO] (
   [Url] VARCHAR(50) NOT NULL, 
   PRIMARY KEY ([Seq], [Product_id]), 
   FOREIGN KEY (Product_id) REFERENCES PRODUCT(Id) 
-  ON DELETE NO ACTION 
-  ON UPDATE NO ACTION
+  ON DELETE CASCADE 
+  ON UPDATE CASCADE
 ); 
  
 CREATE TABLE [SHIPMENT] ( 
@@ -93,8 +93,8 @@ CREATE TABLE [ORDERS] (
   [Status] VARCHAR(10) DEFAULT 'processing',
   PRIMARY KEY ([Id]),   
   FOREIGN KEY (Customer_id) REFERENCES CUSTOMER(Id) 
-  ON DELETE NO ACTION  
-  ON UPDATE NO ACTION 
+  ON DELETE NO ACTION  --  Prevent from deleting customer_id this action to trace the order record
+  ON UPDATE CASCADE 
 ); 
  
 CREATE TABLE [INVOICE] ( 
@@ -103,23 +103,21 @@ CREATE TABLE [INVOICE] (
   [Date] DATE NOT NULL,  
   [Status] VARCHAR(10) DEFAULT 'issued',
   PRIMARY KEY ([Number]), 
-
   FOREIGN KEY (Order_id) REFERENCES ORDERS(Id) 
   ON DELETE NO ACTION 
-  ON UPDATE NO ACTION
+  ON UPDATE CASCADE
 ); 
  
 CREATE TABLE [PAYMENT] ( 
   [Id] INT, 
   [Invoice_number] VARCHAR(10) NOT NULL, 
   [Credit_card_num] VARCHAR(16) NOT NULL, 
-  [Amount] FLOAT(10) NOT NULL, 
+  [Amount] FLOAT(10) NOT NULL CHECK(Amount > 0), 
   PRIMARY KEY ([Id]), 
-
-  FOREIGN KEY (Invoice_number) REFERENCES INVOICE(Number)  
+  FOREIGN KEY (Invoice_number) REFERENCES INVOICE(Number)          -- prevent from changes to trace the record
   ON DELETE NO ACTION
   ON UPDATE NO ACTION, 
-  FOREIGN KEY (Credit_card_num) REFERENCES CREDIT_CARD(Card_num) 
+  FOREIGN KEY (Credit_card_num) REFERENCES CREDIT_CARD(Card_num)   -- prevent from changes to trace the record
   ON DELETE NO ACTION 
   ON UPDATE NO ACTION 
 ); 
@@ -129,18 +127,21 @@ CREATE TABLE [ORDER_ITEM] (
   [Order_id] INT, 
   [Product_id] INT NOT NULL, 
   [Shipment_id] INT ,
-  [Quantity] INT NOT NULL, 
-  [Status] VARCHAR(20) DEFAULT 'processing', 
-  [Product_unit_price] FLOAT(7) not null, 
+  [Quantity] INT NOT NULL CHECK(Quantity>0), 
+  [Status] VARCHAR(10) DEFAULT 'processing', 
+  [Product_unit_price] FLOAT(7) not null CHECK(Product_unit_price>0), 
   PRIMARY KEY ([Sequence_num], [Order_id]), 
 
   FOREIGN KEY (Order_id) REFERENCES ORDERS(Id) 
   ON DELETE NO ACTION   
-  ON UPDATE NO ACTION, 
+  ON UPDATE CASCADE, 
   FOREIGN KEY (Product_id) REFERENCES PRODUCT(Id) 
   ON DELETE NO ACTION  
-  ON UPDATE NO ACTION, 
+  ON UPDATE CASCADE, 
   FOREIGN KEY (Shipment_id) REFERENCES SHIPMENT(Id)  
   ON DELETE NO ACTION 
-  ON UPDATE NO ACTION 
+  ON UPDATE CASCADE 
 );
+
+
+-- Most of time, we set ON DELETE NO ACTION to prevent from losing the record
