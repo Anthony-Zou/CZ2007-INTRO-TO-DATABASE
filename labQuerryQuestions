@@ -23,5 +23,7 @@ group by RESTRICTED_TO.Shop_id) as t1)
 SELECT DISTINCT O.Id
 FROM ORDERS O, ORDER_ITEM OT, SHIPMENT S
 WHERE O.Id = OT.Order_id AND OT.Shipment_id =S.Id AND O.Status='completed'
-AND DATEDIFF(day, O.Date, (SELECT MAX(S1.Date) FROM SHIPMENT S1, ORDER_ITEM OT1
-WHERE OT1. Shipment_id=S1.Id and OT1.Order_id=OT1.Order_id AND S1.Id=S.Id)) < 10
+AND DATEDIFF(day, O.Date,
+(SELECT MAX(S1.Date) FROM SHIPMENT S1, ORDER_ITEM OT1
+WHERE OT1.Shipment_id=S1.Id and OT1.Order_id=O.Id )) < 10
+
