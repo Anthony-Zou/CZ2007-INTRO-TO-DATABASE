@@ -1,3 +1,13 @@
+--Q1
+DECLARE @productid int;
+SET @productid=1;
+
+SELECT Tracking_num
+FROM SHIPMENT , ORDER_ITEM
+WHERE SHIPMENT.Id = ORDER_ITEM.Shipment_id
+AND ORDER_ITEM.Product_id=@productid;
+
+
 --difficult Q5
 select RESTRICTED_TO.Shop_id,count(Restricted_to.Product_type_id) as amt
 from RESTRICTED_TO 
@@ -7,6 +17,8 @@ select MAX(amt)
 from (select RESTRICTED_TO.Shop_id,count(Restricted_to.Product_type_id) as amt
 from RESTRICTED_TO 
 group by RESTRICTED_TO.Shop_id) as t1) 
+
+
 --Q6
 SELECT DISTINCT O.Id
 FROM ORDERS O, ORDER_ITEM OT, SHIPMENT S
