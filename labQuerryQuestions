@@ -1,0 +1,9 @@
+--difficult Q5
+select RESTRICTED_TO.Shop_id,count(Restricted_to.Product_type_id) as amt
+from RESTRICTED_TO 
+group by RESTRICTED_TO.Shop_id 
+having count(Restricted_to.Product_type_id) >= (
+select MAX(amt)
+from (select RESTRICTED_TO.Shop_id,count(Restricted_to.Product_type_id) as amt
+from RESTRICTED_TO 
+group by RESTRICTED_TO.Shop_id) as t1) 
