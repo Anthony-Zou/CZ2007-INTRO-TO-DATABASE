@@ -7,12 +7,9 @@ select MAX(amt)
 from (select RESTRICTED_TO.Shop_id,count(Restricted_to.Product_type_id) as amt
 from RESTRICTED_TO 
 group by RESTRICTED_TO.Shop_id) as t1) 
---Q5
-select RESTRICTED_TO.Shop_id
-from RESTRICTED_TO 
-group by RESTRICTED_TO.Shop_id 
-having count(Restricted_to.Product_type_id) >= (
-select MAX(amt)
-from (select RESTRICTED_TO.Shop_id,count(Restricted_to.Product_type_id) as amt
-from RESTRICTED_TO 
-group by RESTRICTED_TO.Shop_id) as t1) 
+--Q6
+SELECT DISTINCT O.Id
+FROM ORDERS O, ORDER_ITEM OT, SHIPMENT S
+WHERE O.Id = OT.Order_id AND OT.Shipment_id =S.Id AND O.Status='completed'
+AND DATEDIFF(day, O.Date, (SELECT MAX(S1.Date) FROM SHIPMENT S1, ORDER_ITEM OT1
+WHERE OT1. Shipment_id=S1.Id and OT1.Order_id=OT1.Order_id AND S1.Id=S.Id)) < 10
